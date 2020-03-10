@@ -1,0 +1,6 @@
+framework module Pods_SocialIo_SocialIoUITests {
+  umbrella header "Pods-SocialIo-SocialIoUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
