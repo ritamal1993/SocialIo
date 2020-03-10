@@ -16,4 +16,8 @@ target 'SocialIo' do
     # Pods for testing
   end
 pod 'Firebase/Analytics'
+pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
+pod 'Firebase/Storage'
+pod 'Firebase/Database'
 end
