@@ -8,7 +8,7 @@
 
 
 import Foundation
-
+import Firebase
 class Model {
     static let instance = Model()
     
@@ -27,12 +27,47 @@ class Model {
     func add(user:User){
 //        modelSql.add(user: user)
         modelFirebase.add(user: user);
+        ModelEvents.UserDataNotification.post();
     }
     
-    func getAllUsers(callback:@escaping ([User]?)->Void){
+    func getAllUsers(callback:@escaping
+        ([User]?)->Void){
         modelFirebase.getAllUsers(callback: callback);
-//        return modelSql.getAllUsers()
-//        modelFirebase.getAllUsers();
+     //  return modelSql.getAllUsers()
+      //  modelFirebase.getAllUsers();
     }
+   func saveImage(image:UIImage, callback: @escaping (String)->Void){
+        FirebaseStorage.saveImage(image: image, callback: callback)
+    }
+       }
+
+    class ModelEvents{
+        static let UserDataNotification = ModelEventsTemplate(name: "com.admin.UserDataNotification");
+        static let LoginStateNotification = ModelEventsTemplate(name: "com.admin.LoginStateNotification");
+
+        
+        static func removeObserver(observer:Any){
+            NotificationCenter.default.removeObserver(observer)
+        }
+        private init(){}
+    }
+
+    class ModelEventsTemplate{
+        let notificationName:String;
+        
+        init(name:String){
+            notificationName = name;
+        }
+        func observe(callback:@escaping ()->Void)->Any{
+            return NotificationCenter.default.addObserver(forName: NSNotification.Name(notificationName),
+                                                          object: nil, queue: nil) { (data) in
+                                                            callback();
+            }
+        }
+        
+        func post(){
+            NotificationCenter.default.post(name: NSNotification.Name(notificationName), object: self,userInfo:nil);
+        }
+
     
 }

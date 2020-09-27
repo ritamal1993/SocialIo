@@ -7,29 +7,39 @@
 //
 
 import UIKit
-
+import Kingfisher
 class UsersTableViewController: UITableViewController {
 
         var data = [User]()
-        
+    var observer:Any?;
+    
         override func viewDidLoad() {
             super.viewDidLoad()
     //        data = Model.instance.getAllStudents()
         
-            Model.instance.getAllUsers { (_data:[User]?) in
-                if (_data != nil) {
-                    self.data = _data!;
-                    self.tableView.reloadData();
-                }
-            };
-            
+            observer = ModelEvents.UserDataNotification.observe {
+                self.reloadData();
+            }
+            reloadData();
             // Uncomment the following line to preserve selection between presentations
             // self.clearsSelectionOnViewWillAppear = false
 
             // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
             // self.navigationItem.rightBarButtonItem = self.editButtonItem
         }
-
+    deinit{
+        if let observer = observer{
+            ModelEvents.removeObserver(observer: observer)
+        }
+    }
+    func reloadData(){
+        Model.instance.getAllUsers{ (_data:[User]?) in
+            if (_data != nil) {
+            self.data = _data!;
+            self.tableView.reloadData();
+        }
+    };
+    }
         override func viewWillAppear(_ animated: Bool) {
             print("viewWillAppear")
             
@@ -53,7 +63,13 @@ class UsersTableViewController: UITableViewController {
             let st = data[indexPath.row]
             cell.name.text = st.name
             cell.idLabel.text = st.id
+            if (st.avatar == ""){
+                
             cell.avatarImg.image = UIImage(named: "avatar")
+            }else{
+                cell.avatarImg.kf.setImage(with: URL(string : st.avatar))
+                
+            }
             return cell
         }
 
