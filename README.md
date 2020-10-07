@@ -2,13 +2,13 @@
 
 
 ### General info
-This project is postapp.
+This project is post app.
 	
 ### Technologies
 Project is created with:
 * Xcode version: 11.2
 * iPhone version: 13.2
-* Simulator version
+* Simulator version: iPhone 8
 
 	
 ### Setup
