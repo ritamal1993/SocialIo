@@ -1,7 +1,7 @@
 # SocialIo
 
 
-# General info
+### General info
 This project is postapp.
 	
 # Technologies
