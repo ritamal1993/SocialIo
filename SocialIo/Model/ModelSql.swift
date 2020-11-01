@@ -51,7 +51,7 @@ class ModelSql{
         var sqlite3_stmt: OpaquePointer? = nil
         var data = [User]()
         
-        if (sqlite3_prepare_v2(database,"SELECT * from STUDENTS;",-1,&sqlite3_stmt,nil)
+        if (sqlite3_prepare_v2(database,"SELECT * from USERS;",-1,&sqlite3_stmt,nil)
             == SQLITE_OK){
             while(sqlite3_step(sqlite3_stmt) == SQLITE_ROW){
                 let stId = String(cString:sqlite3_column_text(sqlite3_stmt,0)!)

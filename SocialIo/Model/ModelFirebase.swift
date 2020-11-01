@@ -10,7 +10,6 @@ import Foundation
 import Firebase
 
 class ModelFirebase{
-    
     func add(user:User){
         let db = Firestore.firestore()
         // Add a new document with a generated ID

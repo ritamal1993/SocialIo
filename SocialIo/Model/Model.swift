@@ -42,8 +42,8 @@ class Model {
        }
 
     class ModelEvents{
-        static let UserDataNotification = ModelEventsTemplate(name: "com.admin.UserDataNotification");
-        static let LoginStateNotification = ModelEventsTemplate(name: "com.admin.LoginStateNotification");
+        static let UserDataNotification = ModelEventsTemplate(name: "com.company.UserDataNotification");
+        static let LoginStateNotification = ModelEventsTemplate(name: "com.company.LoginStateNotification");
 
         
         static func removeObserver(observer:Any){

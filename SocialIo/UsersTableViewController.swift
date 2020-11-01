@@ -15,6 +15,7 @@ class UsersTableViewController: UITableViewController {
     
         override func viewDidLoad() {
             super.viewDidLoad()
+          
     //        data = Model.instance.getAllStudents()
         
             observer = ModelEvents.UserDataNotification.observe {
@@ -58,7 +59,7 @@ class UsersTableViewController: UITableViewController {
 
 
         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell:UserViewCell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserViewCell
+            let cell:UserViewCell = tableView.dequeueReusableCell(withIdentifier: "UserViewCell", for: indexPath) as! UserViewCell
 
             let st = data[indexPath.row]
             cell.name.text = st.name
