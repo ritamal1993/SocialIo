@@ -23,6 +23,7 @@ class NewUserViewController: UIViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+           activity.isHidden=true;
     }
   
     @IBAction func save(_ sender: UIButton) {
