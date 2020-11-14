@@ -14,11 +14,12 @@ class User {
     var id:String = ""
     var name:String = ""
     var avatar:String = ""
-    
+    var lastUpdated:Int64 = 0 //implement save with server timestamp
     init(id:String, name:String, avatar:String){
         self.id = id
         self.name = name
         self.avatar = avatar
+        
     }
     
     init(json:[String:Any]){

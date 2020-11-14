@@ -10,31 +10,47 @@
 import Foundation
 import Firebase
 class Model {
-    static let instance = Model()
-    
-    
-//    var modelSql:ModelSql = ModelSql()
+ static let instance = Model()
+   var modelSql:ModelSql = ModelSql()
     var modelFirebase:ModelFirebase = ModelFirebase()
 
     private init(){
-//        modelSql.connect()
-//        for i in 0...5{
-//            let st = User(id: String(i),name: "name " + String(i),avatar: "")
-//            add(user: st)
-//        }
+
     }
     
     func add(user:User){
-//        modelSql.add(user: user)
+     //   modelSql.add(user: user)
         modelFirebase.add(user: user);
         ModelEvents.UserDataNotification.post();
     }
     
     func getAllUsers(callback:@escaping
         ([User]?)->Void){
-        modelFirebase.getAllUsers(callback: callback);
-     //  return modelSql.getAllUsers()
-      //  modelFirebase.getAllUsers();
+        //get  the local last update
+        
+        let lud=modelSql.getLastUpdateDate(name: "USERS")
+        //get the records from fire base since the local last update date
+        
+        modelFirebase.getAllUsers(since:lud){ (stData) in
+        
+                //save  the new records to the local db
+            var locaLud:Int64 = 0
+            for user in stData!{
+                self.modelSql.add(user:user)
+                if (user.lastUpdated > locaLud){
+                    locaLud=user.lastUpdated
+                }
+                
+            }
+                
+                //save the new local last update date
+            self.modelSql.setLastUpdateDate(name: "USERS", lud: locaLud)
+                
+                //get the complete data from the local db
+            let completeData=self.modelSql.getAllUsers()
+                //return the complete data to the caller
+            callback(completeData);
+        }
     }
    func saveImage(image:UIImage, callback: @escaping (String)->Void){
         FirebaseStorage.saveImage(image: image, callback: callback)

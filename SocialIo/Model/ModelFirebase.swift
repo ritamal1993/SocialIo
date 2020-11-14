@@ -24,8 +24,8 @@ class ModelFirebase{
                 }
         })
     }
-    
-    func getAllUsers(callback: @escaping ([User]?)->Void){
+    //todo complite since implemention
+    func getAllUsers(since:Int64,callback: @escaping ([User]?)->Void){
         let db = Firestore.firestore()
         db.collection("users").getDocuments { (querySnapshot, err) in
             if let err = err {

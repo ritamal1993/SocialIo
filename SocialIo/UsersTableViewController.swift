@@ -16,29 +16,30 @@ class UsersTableViewController: UITableViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
           
-    //        data = Model.instance.getAllStudents()
+            self.refreshControl  = UIRefreshControl()
+            self.refreshControl?.addTarget(self, action: #selector(reloadData), for: .valueChanged)
         
             observer = ModelEvents.UserDataNotification.observe {
                 self.reloadData();
             }
+           
             reloadData();
-            // Uncomment the following line to preserve selection between presentations
-            // self.clearsSelectionOnViewWillAppear = false
-
-            // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-            // self.navigationItem.rightBarButtonItem = self.editButtonItem
         }
     deinit{
         if let observer = observer{
             ModelEvents.removeObserver(observer: observer)
         }
     }
-    func reloadData(){
+    @objc func reloadData(){
+        if self.refreshControl?.isRefreshing == false{
+            self.refreshControl?.beginRefreshing()
+        }
         Model.instance.getAllUsers{ (_data:[User]?) in
             if (_data != nil) {
             self.data = _data!;
             self.tableView.reloadData();
         }
+            self.refreshControl?.endRefreshing();
     };
     }
         override func viewWillAppear(_ animated: Bool) {
