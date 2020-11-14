@@ -64,13 +64,10 @@ class UsersTableViewController: UITableViewController {
             let st = data[indexPath.row]
             cell.name.text = st.name
             cell.idLabel.text = st.id
-            if (st.avatar == ""){
-                
-            cell.avatarImg.image = UIImage(named: "avatar")
-            }else{
-                cell.avatarImg.kf.setImage(with: URL(string : st.avatar))
-                
-            }
+            cell.avatarImg.image=UIImage(named:"avatar")
+            if (st.avatar != ""){
+cell.avatarImg.kf.setImage(with: URL(string : st.avatar))
+         }
             return cell
         }
 

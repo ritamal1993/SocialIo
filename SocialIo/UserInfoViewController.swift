@@ -8,6 +8,7 @@
 
 import UIKit
 
+import Kingfisher
 class UserInfoViewController: UIViewController {
 
 
@@ -29,9 +30,13 @@ class UserInfoViewController: UIViewController {
         nameLabel.text = user?.name
         idLabel.text = user?.id
         avatarImg.image = UIImage(named: "avatar")
+        if(user?.avatar != ""){
+            avatarImg.kf.setImage(with: URL(string: user!.avatar));
+        }
+        
 
     }
     
-
 }
+
 
