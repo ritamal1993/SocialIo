@@ -27,17 +27,22 @@ class NewUserViewController: UIViewController,
     }
   
     @IBAction func save(_ sender: UIButton) {
-        if let image = selectedImage{
-            activity.isHidden=false;
-            saveBtn.isEnabled=false;
-            picBtn.isEnabled=false;
-            Model.instance.saveImage(image: image) { (url) in
-                print("saved image url \(url)");
-                let st = User(id: self.idTextView.text!, name:self.nameTextView.text!, avatar:url);
-                        Model.instance.add(user: st);
-                        self.navigationController?.popViewController(animated: true);
-            }
-        }
+        activity.isHidden = false;
+             saveBtn.isEnabled = false;
+             picBtn.isEnabled = false;
+             let st = User(id:self.idTextView.text!);
+             st.name = self.nameTextView.text!
+             guard let selectedImage = selectedImage else {
+                 Model.instance.add(user: st);
+                 self.navigationController?.popViewController(animated: true);
+                 return;
+             }
+
+             Model.instance.saveImage(image: selectedImage) { (url) in
+                 st.avatar = url;
+                 Model.instance.add(user: st);
+                 self.navigationController?.popViewController(animated: true);
+             }
     }
     
     @IBAction func takePic(_ sender: UIButton) {

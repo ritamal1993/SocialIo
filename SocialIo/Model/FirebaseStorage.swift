@@ -16,11 +16,10 @@ class FirebaseStorage {
         let storageRef = Storage.storage().reference(forURL:
             "gs://socialio-c3892.appspot.com")
         
-        let data = image.jpegData(compressionQuality: 0.8)
+    
         
-        //TODO: replace "image" with user id
-        let imageName:String = "image" + self.getCurrentTimeStampWOMiliseconds(dateToConvert: NSDate()) + String(Int.random(in: 1..<99999999999));
-        let imageRef = storageRef.child(imageName)
+        let data = image.jpegData(compressionQuality: 0.5)
+        let imageRef = storageRef.child("imageName")
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         imageRef.putData(data!, metadata: metadata) { (metadata, error) in
@@ -32,15 +31,8 @@ class FirebaseStorage {
                 callback(downloadURL.absoluteString)
             }
         }
-    }
-    static func getCurrentTimeStampWOMiliseconds(dateToConvert: NSDate) -> String {
-           let objDateformat: DateFormatter = DateFormatter()
-           objDateformat.dateFormat = "yyyy-MM-dd"
-           let strTime: String = objDateformat.string(from: dateToConvert as Date)
-           let objUTCDate: NSDate = objDateformat.date(from: strTime)! as NSDate
-           let milliseconds: Int64 = Int64(objUTCDate.timeIntervalSince1970)
-           let strTimeStamp: String = "\(milliseconds)"
-           return strTimeStamp
+  
+
        }
        
 }

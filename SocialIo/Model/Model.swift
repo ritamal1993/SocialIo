@@ -8,107 +8,93 @@
 
 
 import Foundation
-import Firebase
+import UIKit
+
 class Model {
- static let instance = Model()
-   var modelSql:ModelSql = ModelSql()
+    static let instance = Model()
+    
     var modelFirebase:ModelFirebase = ModelFirebase()
-
+    
     private init(){
-
     }
     
-    func add(user:User){
-     //   modelSql.add(user: user)
+    func add(user: User){
         modelFirebase.add(user: user);
-        ModelEvents.UserDataNotification.post();
     }
     
-    func getAllUsers(callback:@escaping
-        ([User]?)->Void){
-        //get  the local last update
+    func getAllUsers(callback:@escaping ([User]?)->Void){
         
-        let lud=modelSql.getLastUpdateDate(name: "USERS")
-        //get the records from fire base since the local last update date
+        //get the local last update date
+       let last = User.getLastUpdateDate();
         
-        modelFirebase.getAllUsers(since:lud){ (stData) in
-        
-                //save  the new records to the local db
-            var locaLud:Int64 = 0
-            for user in stData!{
-                self.modelSql.add(user:user)
-                if (user.lastUpdated > locaLud){
-                    locaLud=user.lastUpdated
-                }
-                
+       
+        modelFirebase.getAllUsers(since:last) { (data) in
+           
+           var last:Int64 = 0;
+            for user in data!{
+               user.addToDb()
+                if user.lastUpdated! > last {last = user.lastUpdated!  }
             }
-                
-                //save the new local last update date
-            self.modelSql.setLastUpdateDate(name: "USERS", lud: locaLud)
-                
-                //get the complete data from the local db
-            let completeData=self.modelSql.getAllUsers()
-                //return the complete data to the caller
-            callback(completeData);
+          //  update the local last update date
+            User.setLastUpdate(lastUpdated: last)
+           //  get the complete list
+            let finalData = User.getAllUsersFromDb()
+            callback(finalData);
         }
     }
-   func saveImage(image:UIImage, callback: @escaping (String)->Void){
+
+    func saveImage(image:UIImage, callback:@escaping (String)->Void) {
         FirebaseStorage.saveImage(image: image, callback: callback)
     }
-       }
+    
+}
+class ModelEvents{
+    static let UserDataEvent = EventNotificationBase(eventName: "com.company.UserDataEvent");
+    static let LoggingStateChangeEvent = EventNotificationBase(eventName: "com.company.LoggingStateChangeEvent");
+    
+    static let CommentsDataEvent = StringEventNotificationBase<String>(eventName: "com.company.CommentsDataEvent");
+    private init(){}
+}
 
-    class ModelEvents{
-        static let UserDataNotification = ModelEventsTemplate(name: "com.company.UserDataNotification");
-        static let LoginStateNotification = ModelEventsTemplate(name: "com.company.LoginStateNotification");
-   static let GPSUpdateEvent = ModelEventsTemplateWithArgs<String>(name: "com.company.GPSUpdateEvent");
-           static let UsersListUpdateEvent = ModelEventsTemplateWithArgs<[User]>(name: "com.company.UsersListUpdateEvent");
-        
-        static func removeObserver(observer:Any){
-            NotificationCenter.default.removeObserver(observer)
-        }
-        private init(){}
+class EventNotificationBase{
+    let eventName:String;
+    
+    init(eventName:String){
+        self.eventName = eventName;
     }
-
-    class ModelEventsTemplate{
-        let notificationName:String;
-        
-        init(name:String){
-            notificationName = name;
+    
+    func observe(callback:@escaping ()->Void){
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(eventName),
+                                               object: nil, queue: nil) { (data) in
+                                                callback();
         }
-        func observe(callback:@escaping ()->Void)->Any{
-            return NotificationCenter.default.addObserver(forName: NSNotification.Name(notificationName),
-                                                          object: nil, queue: nil) { (data) in
-                                                            callback();
-            }
-        }
-        
-        func post(){
-            NotificationCenter.default.post(name: NSNotification.Name(notificationName), object: self,userInfo:nil);
-        }
-}
-    ///
-        
-        ///
-        class ModelEventsTemplateWithArgs<T>{
-             let notificationName:String;
-             
-             init(name:String){
-                 notificationName = name;
-             }
-             func observe(callback:@escaping (T)->Void)->Any{
-                return NotificationCenter.default.addObserver(forName: NSNotification.Name(notificationName),
-                                                               
-                object: nil, queue: nil) { (data) in
-                                                                let d:T = data.userInfo!["data"] as!
-                    T;
-                                                                callback(d);
-                 }
-             }
-             
-            func post(data:T){
-                NotificationCenter.default.post(name: NSNotification.Name(notificationName), object: self,userInfo:["data":data]);
-             }
-
+    }
+    
+    func post(){
+        NotificationCenter.default.post(name: NSNotification.Name(eventName),
+                                        object: self,
+                                        userInfo: nil);
+    }
 }
 
-
+class StringEventNotificationBase<T>{
+    let eventName:String;
+    
+    init(eventName:String){
+        self.eventName = eventName;
+    }
+    
+    func observe(callback:@escaping (T)->Void){
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(eventName),
+                                               object: nil, queue: nil) { (data) in
+                                                let strData = data.userInfo!["data"] as! T
+                                                callback(strData);
+        }
+    }
+    
+func post(data:T){
+        NotificationCenter.default.post(name: NSNotification.Name(eventName),
+                                        object: self,
+                                        userInfo: ["data":data]);
+    }
+}

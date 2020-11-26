@@ -9,31 +9,15 @@
 
 
 import Foundation
+import Firebase
 
 class User {
-    var id:String = ""
+    let id:String
     var name:String = ""
     var avatar:String = ""
-    var lastUpdated:Int64 = 0 //implement save with server timestamp
-    init(id:String, name:String, avatar:String){
+    var lastUpdated: Int64?
+    
+    init(id:String){
         self.id = id
-        self.name = name
-        self.avatar = avatar
-        
     }
-    
-    init(json:[String:Any]){
-        self.id = json["id"] as! String;
-        self.name = json["name"] as! String;
-        self.avatar = json["avatar"] as! String;
-    }
-    
-    func toJson() -> [String:String] {
-        var json = [String:String]();
-        json["id"] = id
-        json["name"] = name
-        json["avatar"] = avatar
-        return json;
-    }
-    
 }
