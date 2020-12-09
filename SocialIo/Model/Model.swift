@@ -47,6 +47,27 @@ class Model {
         FirebaseStorage.saveImage(image: image, callback: callback)
     }
     
+    
+    ////// user Autantication ////////
+    var logedIn = false;
+    func isLoggedIn()->Bool{
+        return logedIn
+    }
+    func logIn(email:String,pwd:String,callback:(Bool)->Void){
+        
+        logedIn = true;
+        callback(true);
+    }
+    func logout(){
+  
+   logedIn=false;
+    }
+    func register(user:String,email:String,pwd:String,callback:(Bool)->Void){
+    
+    logedIn = true;
+    callback(true);
+        
+    }
 }
 class ModelEvents{
     static let UserDataEvent = EventNotificationBase(eventName: "com.company.UserDataEvent");

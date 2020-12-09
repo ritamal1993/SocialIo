@@ -120,5 +120,7 @@ class UsersTableViewController: UITableViewController {
             selected = data[indexPath.row]
             performSegue(withIdentifier: "UserInfoSegue", sender: self)
         }
+    @IBAction func backFromCancelLogin(seque:UIStoryboardSegue){
         
+    }
     }

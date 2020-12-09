@@ -19,6 +19,9 @@
 		843804BF249A5E7B00F48ECB /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843804BE249A5E7B00F48ECB /* NewUserViewController.swift */; };
 		845F13EB257032E800087F74 /* User+Sql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F13EA257032E800087F74 /* User+Sql.swift */; };
 		845F13ED2570341C00087F74 /* User+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F13EC2570341C00087F74 /* User+Firebase.swift */; };
+		8462B8B0257F88BD0027DC58 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462B8AF257F88BD0027DC58 /* LoginViewController.swift */; };
+		8462B8B2257F8A9E0027DC58 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462B8B1257F8A9E0027DC58 /* RegisterViewController.swift */; };
+		84A070292580F0C5008C6685 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A070282580F0C4008C6685 /* ProfileViewController.swift */; };
 		86ED3B622412688D0042ED88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED3B612412688D0042ED88 /* AppDelegate.swift */; };
 		86ED3B642412688D0042ED88 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED3B632412688D0042ED88 /* SceneDelegate.swift */; };
 		86ED3B662412688D0042ED88 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED3B652412688D0042ED88 /* UserInfoViewController.swift */; };
@@ -66,6 +69,9 @@
 		843804BE249A5E7B00F48ECB /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		845F13EA257032E800087F74 /* User+Sql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Sql.swift"; sourceTree = "<group>"; };
 		845F13EC2570341C00087F74 /* User+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Firebase.swift"; sourceTree = "<group>"; };
+		8462B8AF257F88BD0027DC58 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8462B8B1257F8A9E0027DC58 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		84A070282580F0C4008C6685 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		86ED3B5E2412688D0042ED88 /* SocialIo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialIo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86ED3B612412688D0042ED88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86ED3B632412688D0042ED88 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +169,9 @@
 				0751CF4A2417BA89004E9C81 /* UserViewCell.swift */,
 				0751CF482417B9BE004E9C81 /* UsersTableViewController.swift */,
 				843804BE249A5E7B00F48ECB /* NewUserViewController.swift */,
+				8462B8AF257F88BD0027DC58 /* LoginViewController.swift */,
+				8462B8B1257F8A9E0027DC58 /* RegisterViewController.swift */,
+				84A070282580F0C4008C6685 /* ProfileViewController.swift */,
 				86ED3B672412688D0042ED88 /* Main.storyboard */,
 				86ED3B6A2412688E0042ED88 /* Assets.xcassets */,
 				86ED3B6C2412688E0042ED88 /* LaunchScreen.storyboard */,
@@ -456,11 +465,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8462B8B0257F88BD0027DC58 /* LoginViewController.swift in Sources */,
 				843804BD249A5A7600F48ECB /* FirebaseStorage.swift in Sources */,
 				0751CF412417A5E9004E9C81 /* Model.swift in Sources */,
 				0751CF4B2417BA89004E9C81 /* UserViewCell.swift in Sources */,
 				845F13EB257032E800087F74 /* User+Sql.swift in Sources */,
 				0751CF472417B8D4004E9C81 /* ModelFirebase.swift in Sources */,
+				84A070292580F0C5008C6685 /* ProfileViewController.swift in Sources */,
+				8462B8B2257F8A9E0027DC58 /* RegisterViewController.swift in Sources */,
 				0751CF3F2417A5D2004E9C81 /* User.swift in Sources */,
 				845F13ED2570341C00087F74 /* User+Firebase.swift in Sources */,
 				86ED3B662412688D0042ED88 /* UserInfoViewController.swift in Sources */,

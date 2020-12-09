@@ -24,6 +24,10 @@ class NewUserViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
            activity.isHidden=true;
+        if(!Model.instance.isLoggedIn()){
+            let loginVc = UIStoryboard(name: "Main",bundle: nil).instantiateViewController(identifier: "LoginViewController")
+            show(loginVc, sender: self)
+        }
     }
   
     @IBAction func save(_ sender: UIButton) {
