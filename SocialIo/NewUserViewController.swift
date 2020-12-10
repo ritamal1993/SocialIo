@@ -10,8 +10,15 @@ import UIKit
 
 class NewUserViewController: UIViewController,
                 UIImagePickerControllerDelegate,
-                UINavigationControllerDelegate {
-    
+                UINavigationControllerDelegate,LoginViewControllerDelegate{
+    func onLoginSuccess() {
+      
+    }
+    func onLoginCancele() {
+        self.navigationController?.popViewController(animated: true);
+       
+        
+    }
     @IBOutlet weak var picBtn: UIButton!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var activity: UIActivityIndicatorView!
@@ -24,12 +31,23 @@ class NewUserViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
            activity.isHidden=true;
-        if(!Model.instance.isLoggedIn()){
-            let loginVc = UIStoryboard(name: "Main",bundle: nil).instantiateViewController(identifier: "LoginViewController")
-            show(loginVc, sender: self)
-        }
+   if(!Model.instance.isLoggedIn()){
+                       let loginVc=LoginViewController.factory();
+                loginVc.delegate=self
+                       show(loginVc, sender: self)
     }
-  
+    }
+        
+        override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated);
+       
+    }
+    
+    
+        
+    
+   
     @IBAction func save(_ sender: UIButton) {
         activity.isHidden = false;
              saveBtn.isEnabled = false;

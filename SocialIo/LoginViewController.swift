@@ -7,22 +7,34 @@
 //
 
 import UIKit
-
+protocol LoginViewControllerDelegate{
+    func onLoginSuccess();
+    func onLoginCancele();
+}
 class LoginViewController: UIViewController {
-
+    var delegate:LoginViewControllerDelegate?
     @IBOutlet weak var emailTv: UITextField!
     @IBOutlet weak var pwdTv: UITextField!
-
+   
+    
+    static func factory()->LoginViewController{
+    return UIStoryboard(name: "Main",bundle: nil).instantiateViewController(identifier: "LoginViewController")
+    }
    override func viewDidLoad() {
         super.viewDidLoad()
 
     self.navigationItem.hidesBackButton = true
-    let newBackButton=UIBarButtonItem(title: "Cancle", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.back(sender:)))
+    
+    let newBackButton=UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.back(sender:)))
     self.navigationItem.leftBarButtonItem = newBackButton
         }
 
     @objc func back(sender:UIBarButtonItem){
-        performSegue(withIdentifier: "cancelLoginSegue", sender: self)
+      //  performSegue(withIdentifier: "cancelLoginSegue", sender: self)
+          self.navigationController?.popViewController(animated: true);
+        if let delegate=delegate{
+            delegate.onLoginCancele()
+        }
     }
     
     @IBAction func login(_ sender: UIButton) {
@@ -30,9 +42,12 @@ class LoginViewController: UIViewController {
             (success) in
             if(success)
                 {
-                    self.navigationController?.popViewController(animated: true);
+                        if let delegate=delegate{
+                           delegate.onLoginSuccess()
             }
     }
     }
    
+
+}
 }
