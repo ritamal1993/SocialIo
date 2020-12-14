@@ -49,25 +49,50 @@ class Model {
     
     
     ////// user Autantication ////////
-    var logedIn = false;
-    func isLoggedIn()->Bool{
-        return logedIn
-    }
-    func logIn(email:String,pwd:String,callback:(Bool)->Void){
+   
+  //  func logIn(email:String,pwd:String,callback:(Bool)->Void){
         
-        logedIn = true;
-        callback(true);
-    }
-    func logout(){
+    //    logedIn = true;
+    //    callback(true);
+  //  }
+   // func logout(){
   
-   logedIn=false;
-    }
-    func register(user:String,email:String,pwd:String,callback:(Bool)->Void){
+  // logedIn=false;
+   // }
+  //  func register(user:String,email:String,pwd:String,callback:(Bool)->Void){
     
-    logedIn = true;
-    callback(true);
+   // logedIn = true;
+   // callback(true);
         
-    }
+   // }
+    
+    func signInToFirebase(email:String, password:String ,callback:@escaping (String?)->()){
+        
+          modelFirebase.signInToFirebase(email: email, password: password,callback: callback)
+      
+      }
+      func createUserInFirebase(user:UserAuth,callback:@escaping (String?)->()){
+           
+          modelFirebase.createUserInFirebase(user: user,callback: callback)
+      }
+      func areUserLoggedIn() -> Bool{
+          return modelFirebase.areUserLoggedIn()
+      }
+      func logOut(){
+          modelFirebase.logOut()
+   
+      }
+      func getCurrentUserEmail()->String?{
+          modelFirebase.getCurrentUserEmail()
+      }
+      func getCurrentUserName()->String?{
+          modelFirebase.getCurrentUserName()
+      }
+      func getCurrentUserId()->String?{
+          modelFirebase.getCurrentUserId()
+      }
+    
+    ////////////////////////////////////////////////////////////
 }
 class ModelEvents{
     static let UserDataEvent = EventNotificationBase(eventName: "com.company.UserDataEvent");

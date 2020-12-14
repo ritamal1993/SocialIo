@@ -29,6 +29,97 @@ class ModelFirebase{
 
     }
     
+        func deletepost(user:User){
+            let db = Firestore.firestore()
+   
+            db.collection("users").document(user.id).delete(){
+                err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                  
+                }
+            }
+
+        }
+   
+    func signInToFirebase(email:String, password:String, callback: @escaping (String?) -> ()) {
+      Auth.auth().signIn(withEmail: email, password: password) { (FBuser, error) in
+        if(error == nil) {
+            callback(nil)
+        }
+        else{callback(error!.localizedDescription)}
+      }
+    }
+    //FIRUser
+    func createUserInFirebase(user:UserAuth, callback: @escaping (String?) -> ()) {
+        Auth.auth().createUser(withEmail: user.email, password: user.password) { (newUser, error) in
+            if(error == nil) {
+                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                changeRequest?.displayName = user.fullName
+                changeRequest!.commitChanges { err in
+                    if (err == nil) {
+                        callback(nil)
+                    } else {
+                        callback(err!.localizedDescription)
+                    }
+                  }
+            }
+            else{callback(error!.localizedDescription)}
+        }
+    }
+    func getCurrentUserName() -> String?{
+        return Auth.auth().currentUser?.displayName
+    }
+    func getCurrentUserEmail() -> String?{
+        return Auth.auth().currentUser?.email
+    }
+    func getCurrentUserId() -> String?{
+        return Auth.auth().currentUser?.uid
+    }
+    func areUserLoggedIn() -> Bool{
+        if (Auth.auth().currentUser != nil){
+            return true
+        }
+        return false
+    }
+    func logOut(){
+      let firebaseAuth = Auth.auth()
+       do {
+           try firebaseAuth.signOut()
+       } catch let signOutError as NSError {
+           print ("Error signing out: %@", signOutError)
+       }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     //TODO: implement since
     func getAllUsers(since:Int64, callback: @escaping ([User]?)->Void){

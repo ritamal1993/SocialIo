@@ -7,12 +7,9 @@
 //
 
 import UIKit
-protocol LoginViewControllerDelegate{
-    func onLoginSuccess();
-    func onLoginCancele();
-}
+
 class LoginViewController: UIViewController {
-    var delegate:LoginViewControllerDelegate?
+   
     @IBOutlet weak var emailTv: UITextField!
     @IBOutlet weak var pwdTv: UITextField!
    
@@ -32,22 +29,19 @@ class LoginViewController: UIViewController {
     @objc func back(sender:UIBarButtonItem){
       //  performSegue(withIdentifier: "cancelLoginSegue", sender: self)
           self.navigationController?.popViewController(animated: true);
-        if let delegate=delegate{
-            delegate.onLoginCancele()
-        }
+      
     }
     
     @IBAction func login(_ sender: UIButton) {
-        Model.instance.logIn(email: emailTv.text!, pwd: pwdTv.text!) {
-            (success) in
-            if(success)
-                {
-                        if let delegate=delegate{
-                           delegate.onLoginSuccess()
-            }
-    }
-    }
-   
+     Model.instance.signInToFirebase(email:emailTv.text!, password:pwdTv.text!, callback: { (error: String?) in
+               if error == nil{
+                print("Error")
+                   }
+           else{
+                self.performSegue(withIdentifier: "Profile", sender: self);
+        }
 
-}
-}
+        })
+
+
+    }}

@@ -13,23 +13,36 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailTv: UITextField!
     @IBOutlet weak var userTv: UITextField!
     @IBOutlet weak var pswTv: UITextField!
-    @IBAction func register(_ sender: UIButton) {
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func register(_ sender: UIButton) {
+   if (pswTv.text != pswTv.text) {
+             let alertController = UIAlertController(title: "Password Incorrect", message: "Please re-type password", preferredStyle: .alert)
+             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                         
+             alertController.addAction(defaultAction)
+             self.present(alertController, animated: true, completion: nil)
+         }
+         else{
+             let user = UserAuth(email:emailTv.text!,password:pswTv.text!,fullName: userTv.text!)
+          
+             Model.instance.createUserInFirebase(user: user, callback: { (error: String?) in
+                 if (error == nil){
+          print("Error")
+                     }
+                 else{
+               self.performSegue(withIdentifier: "Profile", sender: self);
+         }
 
-    /*
-    // MARK: - Navigation
+                          })
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
+                      }}
+                     
 }
+

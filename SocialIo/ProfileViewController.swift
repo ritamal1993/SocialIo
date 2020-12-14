@@ -8,27 +8,21 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController,LoginViewControllerDelegate {
-    func onLoginSuccess() {
-        
-    }
+class ProfileViewController: UIViewController {
     
-    func onLoginCancele() {
-        self.tabBarController?.selectedIndex = 0;
-    }
-
+  //  @IBOutlet weak var userName: UILabel!
+   // @IBAction func logout(_ sender: Any) {
+      //  Model.instance.logOut()
+       // let storyboard = UIStoryboard(name: "Main", bundle: nil)
+     //   let initial = storyboard.instantiateInitialViewController()
+       // UIApplication.shared.keyWindow?.rootViewController = initial
+ //   }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   if(!Model.instance.isLoggedIn()){
-                       let loginVc = LoginViewController.factory();
-                loginVc.delegate=self
-                       show(loginVc, sender: self)
-                   
-  
-        }
-    
+     //   self.userName.text = Model.instance.getCurrentUserName()
     }
+    
 
 }
 
