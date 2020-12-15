@@ -27,6 +27,7 @@ class RegisterViewController: UIViewController {
                          
              alertController.addAction(defaultAction)
              self.present(alertController, animated: true, completion: nil)
+    
          }
          else{
              let user = UserAuth(email:emailTv.text!,password:pswTv.text!,fullName: userTv.text!)
