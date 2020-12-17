@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class LoginViewController: UIViewController {
    
     @IBOutlet weak var emailTv: UITextField!
@@ -18,11 +18,15 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: UIButton) {
      Model.instance.signInToFirebase(email:emailTv.text!, password:pwdTv.text!, callback: { (error: String?) in
                if error == nil{
-                print("Error")
+                      
+                        let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
+                        
+                        self.view.window?.rootViewController = homeViewController
+                        self.view.window?.makeKeyAndVisible()
             
                    }
            else{
-                self.performSegue(withIdentifier: "Profile", sender: self);
+                print("error");
         }
 
         })

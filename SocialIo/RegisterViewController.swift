@@ -34,10 +34,14 @@ class RegisterViewController: UIViewController {
           
              Model.instance.createUserInFirebase(user: user, callback: { (error: String?) in
                  if (error == nil){
-          print("Error")
+                    let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
+                    
+                    self.view.window?.rootViewController = homeViewController
+                    self.view.window?.makeKeyAndVisible()
+         
                      }
                  else{
-               self.performSegue(withIdentifier: "Profile", sender: self);
+                 print("Error")
          }
 
                           })
