@@ -14,7 +14,7 @@ struct Constants {
     struct Storyboard {
         
         static let homeViewController = "Profile"
-        
+        static let start = "Start"
     }
     
     

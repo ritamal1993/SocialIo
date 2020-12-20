@@ -21,15 +21,8 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func register(_ sender: UIButton) {
-   if (pswTv.text != pswTv.text) {
-             let alertController = UIAlertController(title: "Password Incorrect", message: "Please re-type password", preferredStyle: .alert)
-             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                         
-             alertController.addAction(defaultAction)
-             self.present(alertController, animated: true, completion: nil)
-    
-         }
-         else{
+
+      
              let user = UserAuth(email:emailTv.text!,password:pswTv.text!,fullName: userTv.text!)
           
              Model.instance.createUserInFirebase(user: user, callback: { (error: String?) in
@@ -42,6 +35,9 @@ class RegisterViewController: UIViewController {
                      }
                  else{
                  print("Error")
+                    let alert = UIAlertController(title: "Error!!!", message: "email exists or password smaller then 6 characters", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert,animated:true,completion: nil)
          }
 
                           })
@@ -49,5 +45,5 @@ class RegisterViewController: UIViewController {
 
                       }}
                      
-}
+
 
