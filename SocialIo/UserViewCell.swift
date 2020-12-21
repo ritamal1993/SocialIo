@@ -9,6 +9,7 @@
 import UIKit
 
 class UserViewCell: UITableViewCell {
+
     @IBOutlet weak var name: UILabel!
      
      @IBOutlet weak var idLabel: UILabel!

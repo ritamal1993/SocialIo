@@ -43,6 +43,20 @@ class ModelFirebase{
             }
 
         }
+    func updatePost(user:User){
+           let db = Firestore.firestore()
+        db.collection("users").document(user.id).updateData([
+               "name" : user.name,
+               "id" :user.id,
+               "avatar" : user.avatar
+           ]) { err in
+               if let err = err {
+                   print("Error updating document: \(err)")
+               } else {
+                   print("Document successfully updated")
+               }
+           }
+       }
    
     func signInToFirebase(email:String, password:String, callback: @escaping (String?) -> ()) {
       Auth.auth().signIn(withEmail: email, password: password) { (FBuser, error) in
