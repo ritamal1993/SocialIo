@@ -191,13 +191,13 @@
 				8462B8AF257F88BD0027DC58 /* LoginViewController.swift */,
 				8462B8B1257F8A9E0027DC58 /* RegisterViewController.swift */,
 				84A070282580F0C4008C6685 /* ProfileViewController.swift */,
+				84B9130D258AC0B8004FB13B /* BarViewController.swift */,
 				86ED3B672412688D0042ED88 /* Main.storyboard */,
 				86ED3B6A2412688E0042ED88 /* Assets.xcassets */,
 				86ED3B6C2412688E0042ED88 /* LaunchScreen.storyboard */,
 				86ED3B6F2412688E0042ED88 /* Info.plist */,
 				86ED3B9124126A4C0042ED88 /* GoogleService-Info.plist */,
 				0751CF382417A48B004E9C81 /* SocialIo-Bridging-Header.h */,
-				84B9130D258AC0B8004FB13B /* BarViewController.swift */,
 			);
 			path = SocialIo;
 			sourceTree = "<group>";
