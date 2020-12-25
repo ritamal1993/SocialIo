@@ -91,7 +91,16 @@ class Model {
       func getCurrentUserId()->String?{
           modelFirebase.getCurrentUserId()
       }
-    
+    ////////////////////////////////////////////////////////////
+   
+    func deletepost(user: User){
+            modelFirebase.deletepost(user: user)
+             User.delete( user: user)
+        
+        }
+    func deleteImageinpost(image:UIImage, callback:@escaping (String)->Void) {
+          FirebaseStorage.deleteImage(image: image, callback: callback)
+       }
     ////////////////////////////////////////////////////////////
 }
 class ModelEvents{

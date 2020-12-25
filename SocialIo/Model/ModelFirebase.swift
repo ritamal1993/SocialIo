@@ -38,7 +38,7 @@ class ModelFirebase{
                     print("Error removing document: \(err)")
                 } else {
                     print("Document successfully removed!")
-                  
+                   ModelEvents.UserDataEvent.post();
                 }
             }
 
@@ -83,6 +83,7 @@ class ModelFirebase{
             else{callback(error!.localizedDescription)}
         }
     }
+  
     func getCurrentUserName() -> String?{
         return Auth.auth().currentUser?.displayName
     }

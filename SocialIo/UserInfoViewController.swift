@@ -9,7 +9,7 @@
 import UIKit
 
 import Kingfisher
-class UserInfoViewController: UIViewController {
+class UserInfoViewController: UIViewController{
    var user : User?
 
     @IBOutlet weak var avatarImg: UIImageView!
@@ -52,10 +52,30 @@ class UserInfoViewController: UIViewController {
          }
 
     }
-   // override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       //     if (segue.identifier == "UserInfoSegue"){
-             //   let vc:UserInfoViewController = segue.destination as! //UserInfoViewController
-               /// vc.user = selected
-           // }
-        //}
+      var selectedImage:UIImage?
+            
+            @IBAction func deletep(_ sender: Any) {
+              
+                 let alert = UIAlertController(title: "Delete!!!", message: "do you sure you want to delete this post?", preferredStyle: UIAlertController.Style.alert)
+                                             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                                             self.present(alert,animated:true,completion: nil)
+                 
+                 
+                 let st = User(id:self.idLabel.text!)
+               
+                 st.name = self.nameLabel.text!
+              
+               Model.instance.deletepost(user:st)
+           
+            
+            }
+       
+       
+       func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage;
+        self.avatarImg.image = selectedImage;
+            dismiss(animated: true, completion: nil);
+   }
+     
+       
 }
