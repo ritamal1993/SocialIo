@@ -15,6 +15,8 @@ extension User{
 
         name = json["name"] as! String;
         avatar = json["avatar"] as! String;
+         post = json["post"] as! String;
+         userid = json["userid"] as! String;
         let ts = json["lastUpdated"] as! Timestamp
         lastUpdated = ts.seconds
     }
@@ -24,6 +26,8 @@ extension User{
         json["id"] = id
         json["name"] = name
         json["avatar"] = avatar
+        json["post"] = post
+        json["userid"] = userid
         json["lastUpdated"] = FieldValue.serverTimestamp()
         return json;
     }

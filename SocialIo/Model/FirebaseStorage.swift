@@ -34,19 +34,6 @@ class FirebaseStorage {
   
 
        }
-        static func deleteImage(image:UIImage, callback:@escaping (String)->Void){
-             let storageRef = Storage.storage().reference(forURL:
-                        "gs://socialio-c3892.appspot.com")
-                      
-             let desertRef = storageRef.child("imageName")
-            desertRef.delete{ error in
-                 if error != nil{
-                     //error
-                 }else{
-                     //file deleted
-                     
-                 }
-             }
-        }
+        
 }
  

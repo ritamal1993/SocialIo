@@ -58,8 +58,9 @@ class UsersTableViewController: UITableViewController {
             let cell:UserViewCell = tableView.dequeueReusableCell(withIdentifier: "UserViewCell", for: indexPath) as! UserViewCell
             
             let st = data[indexPath.row]
+           
             cell.name.text = st.name
-            cell.idLabel.text = st.id
+            cell.idLabel.text = st.post
             cell.avatarImg.image = UIImage(named: "avatar")
             if st.avatar != ""{
                 cell.avatarImg.kf.setImage(with: URL(string: st.avatar));
@@ -120,7 +121,5 @@ class UsersTableViewController: UITableViewController {
             selected = data[indexPath.row]
             performSegue(withIdentifier: "UserInfoSegue", sender: self)
         }
-    @IBAction func backFromCancelLogin(seque:UIStoryboardSegue){
-        
-    }
+ 
     }

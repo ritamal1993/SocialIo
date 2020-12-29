@@ -48,7 +48,9 @@ class ModelFirebase{
         db.collection("users").document(user.id).updateData([
                "name" : user.name,
                "id" :user.id,
-               "avatar" : user.avatar
+               "avatar" : user.avatar,
+               "post" :user.post,
+               "userid" :user.userid
            ]) { err in
                if let err = err {
                    print("Error updating document: \(err)")

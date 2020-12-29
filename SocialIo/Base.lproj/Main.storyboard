@@ -57,6 +57,20 @@
                                     <action selector="deletep:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HsI-jA-DLN"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UserID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MdX-et-SU8" userLabel="userid">
+                                <rect key="frame" x="167" y="359" width="53" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PostID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5el-bM-rG7" userLabel="postid">
+                                <rect key="frame" x="52" y="511" width="51" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.97345572710037231" green="0.96930521726608276" blue="0.90155214071273804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -72,8 +86,10 @@
                     <connections>
                         <outlet property="avatarImg" destination="fBh-nn-Ewh" id="8Lp-LP-Y9a"/>
                         <outlet property="editBtn" destination="R3i-vY-l5M" id="x1h-2M-gLc"/>
-                        <outlet property="idLabel" destination="RtI-qz-rHh" id="YaU-ej-eFd"/>
+                        <outlet property="idLabel" destination="RtI-qz-rHh" id="cSB-e1-1Kw"/>
                         <outlet property="nameLabel" destination="Xrk-C5-IoM" id="b0m-0L-Ydl"/>
+                        <outlet property="postid" destination="5el-bM-rG7" id="Pw9-wK-Jvx"/>
+                        <outlet property="userid" destination="MdX-et-SU8" id="ylU-J2-8OE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -126,7 +142,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="......" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JOp-bi-IlK">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JOp-bi-IlK">
                                 <rect key="frame" x="105" y="417" width="165" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -158,6 +174,20 @@
                                     <action selector="save:" destination="m6z-df-juo" eventType="touchUpInside" id="6Yl-3f-ctY"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UserID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfq-qk-BvE">
+                                <rect key="frame" x="156" y="331" width="53" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PostID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTp-9S-W8J" userLabel="postid">
+                                <rect key="frame" x="65" y="519" width="51" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.97300666570663452" green="0.97302931547164917" blue="0.92647475004196167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
@@ -165,12 +195,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="New User" id="3c6-Lu-Lyj"/>
                     <connections>
-                        <outlet property="activity" destination="Qem-J4-lK2" id="iiG-db-ley"/>
-                        <outlet property="avatarImageView" destination="CGW-M0-zpg" id="w7M-Ye-zBl"/>
-                        <outlet property="idTextView" destination="JOp-bi-IlK" id="QtH-nW-Roz"/>
-                        <outlet property="nameTextView" destination="h9l-8g-DS7" id="Szt-xk-Z86"/>
-                        <outlet property="picBtn" destination="KZe-jn-Q7d" id="HAg-Vh-3WE"/>
-                        <outlet property="saveBtn" destination="Pbd-7E-Pmb" id="djr-lK-DjX"/>
+                        <outlet property="PostTextid" destination="xTp-9S-W8J" id="fGf-lE-dBi"/>
+                        <outlet property="PostView" destination="JOp-bi-IlK" id="W8Y-cc-w7H"/>
+                        <outlet property="activity" destination="Qem-J4-lK2" id="5GM-NW-0hU"/>
+                        <outlet property="avatarImageView" destination="CGW-M0-zpg" id="pDG-1n-04U"/>
+                        <outlet property="nameTextView" destination="h9l-8g-DS7" id="Udh-Sm-kl8"/>
+                        <outlet property="picBtn" destination="KZe-jn-Q7d" id="avL-2t-hX9"/>
+                        <outlet property="saveBtn" destination="Pbd-7E-Pmb" id="zVc-jN-5TC"/>
+                        <outlet property="userTextid" destination="Hfq-qk-BvE" id="LOA-AC-5be"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fur-2N-JfF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -339,6 +371,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="avatarImg" destination="dko-wt-Ubr" id="pd3-gm-Im1"/>
+                                    <outlet property="id" destination="cZT-2a-36L" id="3zm-zu-r2L"/>
                                     <outlet property="idLabel" destination="p2r-bN-aA3" id="Z86-Lf-QdZ"/>
                                     <outlet property="name" destination="P77-XH-0xr" id="wb3-eZ-JBR"/>
                                 </connections>
@@ -580,6 +613,6 @@
         <image name="star" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3SX-Vv-L5M"/>
+        <segue reference="Xrb-u6-yxS"/>
     </inferredMetricsTieBreakers>
 </document>

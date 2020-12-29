@@ -98,9 +98,7 @@ class Model {
              User.delete( user: user)
         
         }
-    func deleteImageinpost(image:UIImage, callback:@escaping (String)->Void) {
-          FirebaseStorage.deleteImage(image: image, callback: callback)
-       }
+   
     ////////////////////////////////////////////////////////////
 }
 class ModelEvents{

@@ -19,10 +19,15 @@ class NewUserViewController: UIViewController,
     
       var user : User?
     @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var nameTextView: UITextField!
-    @IBOutlet weak var idTextView: UITextField!
+    @IBOutlet weak var userTextid: UILabel!
+   
     
+    
+    @IBOutlet weak var nameTextView: UITextField!
+    @IBOutlet weak var PostView: UITextField!
 
+    
+    @IBOutlet weak var PostTextid: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +35,14 @@ activity.isHidden = true;
         if (user != nil) {
                    self.initForm()
                }
-              
-                   
+        if(user == nil){
+              self.PostTextid.text = UUID().uuidString
+    }
+              self.userTextid.text=Model.instance.getCurrentUserId()
+        self.PostTextid.isEnabled=false
+        self.PostTextid.tintColor = UIColor.clear
+        self.userTextid.isEnabled=false
+        self.userTextid.tintColor = UIColor.clear
     }
         
         override func viewDidAppear(_ animated: Bool) {
@@ -49,9 +60,11 @@ activity.isHidden = true;
              picBtn.isEnabled = false;
           
         
-             let st = User(id:self.idTextView.text!);
+             let st = User(id:self.PostTextid.text!);
     
-             st.name = self.nameTextView.text!
+              st.name = self.nameTextView.text!
+              st.post = self.PostView.text!
+              st.userid = self.userTextid.text!
              guard let selectedImage = selectedImage else {
                  Model.instance.add(user: st);
                  self.navigationController?.popViewController(animated: true);
@@ -86,8 +99,13 @@ activity.isHidden = true;
     }
 
     private func initForm(){
-        self.idTextView.text=self.user?.id
+         self.userTextid.text=self.user?.userid
+     
         self.nameTextView.text=self.user?.name
+        self.PostView.text=self.user?.post
+        
+        self.PostTextid.text=self.user?.id
+      
         if (!self.user!.avatar.isEmpty) {
                      let url = URL(string: self.user!.avatar)
         self.picBtn.kf.setBackgroundImage(with: url, for: .normal)

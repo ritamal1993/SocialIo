@@ -15,6 +15,8 @@ class User {
     let id:String
     var name:String = ""
     var avatar:String = ""
+    var post:String = ""
+    var userid:String = ""
     var lastUpdated: Int64?
     
     init(id:String){
