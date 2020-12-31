@@ -21,7 +21,9 @@ class Model {
     func add(user: User){
         modelFirebase.add(user: user);
     }
-    
+    func getpostOfCurrentUser(callback: @escaping ([User]?)->Void){
+          modelFirebase.getpostOfCurrentUser(callback: callback);
+      }
     func getAllUsers(callback:@escaping ([User]?)->Void){
         
         //get the local last update date

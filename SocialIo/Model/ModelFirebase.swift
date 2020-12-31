@@ -85,7 +85,23 @@ class ModelFirebase{
             else{callback(error!.localizedDescription)}
         }
     }
-  
+  func getpostOfCurrentUser(callback: @escaping ([User]?)->Void){
+       let db = Firestore.firestore()
+       let userId = self.getCurrentUserId()!
+       db.collection("users").whereField("userid", isEqualTo: userId).getDocuments { (querySnapshot, err) in
+           if let err = err {
+               print("Error getting documents: \(err)")
+               callback(nil);
+           } else {
+               var data = [User]();
+               for document in querySnapshot!.documents {
+                   data.append(User(json: document.data()));
+               }
+               callback(data);
+           }
+       };
+   }
+    //////
     func getCurrentUserName() -> String?{
         return Auth.auth().currentUser?.displayName
     }

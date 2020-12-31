@@ -19,7 +19,7 @@ class UserInfoViewController: UIViewController{
     
     @IBOutlet weak var idLabel: UILabel!
     
-    
+     @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var userid: UILabel!
     
    
@@ -32,6 +32,7 @@ class UserInfoViewController: UIViewController{
     
         override func viewDidLoad() {
         super.viewDidLoad()
+            activity.isHidden = true;
         self.userid.text = user!.userid
         self.postid.text = user!.id
             
@@ -41,10 +42,10 @@ class UserInfoViewController: UIViewController{
                  
          // self.navigationItem.rightBarButtonItem=self.editBtn
             }
-            self.userid.isEnabled=false
-             self.userid.tintColor = UIColor.clear
-            self.postid.isEnabled=false
-             self.postid.tintColor = UIColor.clear
+          //  self.userid.isEnabled=false
+           //  self.userid.tintColor = UIColor.clear
+          //  self.postid.isEnabled=false
+            // self.postid.tintColor = UIColor.clear
             self.nameLabel.text = user!.name
           
             self.idLabel.text = user!.post
@@ -73,7 +74,7 @@ class UserInfoViewController: UIViewController{
             
             @IBAction func deletep(_ sender: Any) {
               
-           
+             activity.isHidden = false;
                 if (self.userid.text == Model.instance.getCurrentUserId()){
                  let st = User(id:self.postid.text!)
                  st.name = self.nameLabel.text!

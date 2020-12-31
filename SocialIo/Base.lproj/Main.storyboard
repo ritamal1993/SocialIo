@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--User Info-->
+        <!--Post-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="UserInfoViewController" customModule="SocialIo" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,7 +37,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="186" translatesAutoresizingMaskIntoConstraints="NO" id="RtI-qz-rHh">
-                                <rect key="frame" x="135" y="418" width="185" height="150"/>
+                                <rect key="frame" x="135" y="410" width="158" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
@@ -50,9 +50,12 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arj-xh-thv">
-                                <rect key="frame" x="166" y="576" width="43" height="30"/>
+                                <rect key="frame" x="166" y="569" width="42" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="delete"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                <state key="normal" title="delete">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="deletep:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HsI-jA-DLN"/>
                                 </connections>
@@ -61,21 +64,26 @@
                                 <rect key="frame" x="167" y="359" width="53" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PostID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5el-bM-rG7" userLabel="postid">
                                 <rect key="frame" x="52" y="511" width="51" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="00j-bN-HAP">
+                                <rect key="frame" x="112" y="569" width="46" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.97345572710037231" green="0.96930521726608276" blue="0.90155214071273804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="User Info" id="OQQ-Iv-vAV">
+                    <navigationItem key="navigationItem" title="Post" id="OQQ-Iv-vAV">
                         <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" id="R3i-vY-l5M">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -84,6 +92,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activity" destination="00j-bN-HAP" id="S4J-rg-R6D"/>
                         <outlet property="avatarImg" destination="fBh-nn-Ewh" id="8Lp-LP-Y9a"/>
                         <outlet property="editBtn" destination="R3i-vY-l5M" id="x1h-2M-gLc"/>
                         <outlet property="idLabel" destination="RtI-qz-rHh" id="cSB-e1-1Kw"/>
@@ -112,7 +121,7 @@
             </objects>
             <point key="canvasLocation" x="1902" y="452"/>
         </scene>
-        <!--New User-->
+        <!--New Post-->
         <scene sceneID="eUn-8k-iNX">
             <objects>
                 <viewController id="m6z-df-juo" customClass="NewUserViewController" customModule="SocialIo" customModuleProvider="target" sceneMemberID="viewController">
@@ -142,7 +151,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JOp-bi-IlK">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="......" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JOp-bi-IlK">
                                 <rect key="frame" x="105" y="417" width="165" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -178,14 +187,14 @@
                                 <rect key="frame" x="156" y="331" width="53" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PostID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTp-9S-W8J" userLabel="postid">
                                 <rect key="frame" x="65" y="519" width="51" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -193,7 +202,7 @@
                         <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="Hyr-yx-UOT"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New User" id="3c6-Lu-Lyj"/>
+                    <navigationItem key="navigationItem" title="New Post" id="3c6-Lu-Lyj"/>
                     <connections>
                         <outlet property="PostTextid" destination="xTp-9S-W8J" id="fGf-lE-dBi"/>
                         <outlet property="PostView" destination="JOp-bi-IlK" id="W8Y-cc-w7H"/>
@@ -298,12 +307,18 @@
                                     <action selector="login:" destination="NRe-L5-QQF" eventType="touchUpInside" id="wrf-dx-0Ga"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="NS5-iW-9Al">
+                                <rect key="frame" x="169" y="374" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="wDV-mA-Sou"/>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="BnF-dk-Ta6" userLabel="Back"/>
                     <connections>
+                        <outlet property="activity" destination="NS5-iW-9Al" id="ZPa-yx-IAm"/>
                         <outlet property="emailTv" destination="VFG-iQ-hrV" id="GE2-UK-y5S"/>
                         <outlet property="pwdTv" destination="SV0-2l-REa" id="aoJ-4s-ZHi"/>
                         <segue destination="PbM-fa-JOb" kind="unwind" identifier="cancelLoginSegue" unwindAction="backFromCancelLoginWithSeque:" id="Yl5-uD-BE2"/>
@@ -314,7 +329,7 @@
             </objects>
             <point key="canvasLocation" x="-3428" y="-587.85607196401804"/>
         </scene>
-        <!--Users-->
+        <!--Posts-->
         <scene sceneID="BBc-Cc-jm0">
             <objects>
                 <tableViewController id="EmW-0g-zUD" customClass="UsersTableViewController" customModule="SocialIo" customModuleProvider="target" sceneMemberID="viewController">
@@ -348,17 +363,10 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZT-2a-36L">
-                                            <rect key="frame" x="122" y="44" width="21" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Post:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZT-2a-36L">
+                                            <rect key="frame" x="122" y="44" width="34" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2r-bN-aA3">
-                                            <rect key="frame" x="151" y="44" width="208" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -367,6 +375,13 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Button" image="star"/>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2r-bN-aA3">
+                                            <rect key="frame" x="167" y="51" width="166" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -382,7 +397,7 @@
                             <outlet property="delegate" destination="EmW-0g-zUD" id="RIh-Mr-DhZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Users" id="lnq-sa-rmg">
+                    <navigationItem key="navigationItem" title="Posts" id="lnq-sa-rmg">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus.app" catalog="system" id="Aee-ZW-GWK">
                             <connections>
                                 <segue destination="JHd-42-Fql" kind="presentation" id="3SX-Vv-L5M"/>
@@ -397,11 +412,11 @@
             </objects>
             <point key="canvasLocation" x="156" y="429.53523238380814"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Posts-->
         <scene sceneID="6V7-14-csN">
             <objects>
                 <navigationController storyboardIdentifier="Nav" id="V2u-rI-LS5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="HfI-wv-Wne">
+                    <tabBarItem key="tabBarItem" title="Posts" image="house" catalog="system" id="HfI-wv-Wne">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ed3-Ns-2WX">
@@ -508,6 +523,7 @@
                         <segue destination="V2u-rI-LS5" kind="relationship" relationship="viewControllers" id="Gcn-KP-rHi"/>
                         <segue destination="ivU-No-v6R" kind="relationship" relationship="viewControllers" id="eog-tA-iAg"/>
                         <segue destination="8fB-Ap-S92" kind="relationship" relationship="viewControllers" id="PWo-Bo-Mun"/>
+                        <segue destination="Het-eh-b6b" kind="relationship" relationship="viewControllers" id="3IQ-Xf-sDy"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cek-AF-moY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -556,12 +572,18 @@
                                     <action selector="register:" destination="zXl-L3-unx" eventType="touchUpInside" id="Oi7-C9-v8k"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="KeX-4R-50E">
+                                <rect key="frame" x="162" y="499" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="N3X-fQ-G4k"/>
                     </view>
                     <navigationItem key="navigationItem" title="SignUp" id="EnU-5q-IUV"/>
                     <connections>
+                        <outlet property="activity" destination="KeX-4R-50E" id="Fvs-6G-U4w"/>
                         <outlet property="emailTv" destination="gtH-Yy-9nt" id="lnc-s9-qD8"/>
                         <outlet property="pswTv" destination="xA0-Ku-T18" id="9M4-TX-sET"/>
                         <outlet property="userTv" destination="jbi-im-49F" id="JpV-hL-5bf"/>
@@ -570,6 +592,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J02-gv-LGo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3428" y="160.56971514242881"/>
+        </scene>
+        <!--MyPosts-->
+        <scene sceneID="rFN-Pd-MVm">
+            <objects>
+                <tableViewController id="ngR-nl-sPh" customClass="MyPostTableViewController" customModule="SocialIo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KAF-Mc-ip2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyPostViewCell" rowHeight="120" id="wSr-Qw-VOP" customClass="MyPostViewCell" customModule="SocialIo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wSr-Qw-VOP" id="Pzf-PH-dq2">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pzb-D2-FXD">
+                                            <rect key="frame" x="0.0" y="0.0" width="143" height="120"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="post" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIO-MK-Tp1">
+                                            <rect key="frame" x="170" y="20" width="162" height="41"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y62-bl-KHi">
+                                            <rect key="frame" x="170" y="64" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <rect key="contentStretch" x="0.0" y="0.29999999999999999" width="1" height="1"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="imageview" destination="Pzb-D2-FXD" id="gUx-2d-ROo"/>
+                                    <outlet property="postview" destination="WIO-MK-Tp1" id="sFZ-c9-HAB"/>
+                                    <outlet property="userid" destination="y62-bl-KHi" id="nlW-Nx-WgO"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ngR-nl-sPh" id="aKM-ei-mpA"/>
+                            <outlet property="delegate" destination="ngR-nl-sPh" id="i3k-sa-zAz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="MyPosts" id="5U2-pg-dle">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="3Rx-yb-yhl"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZyO-MN-4Sq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="333.60000000000002" y="-1698.8005997001501"/>
+        </scene>
+        <!--MyPosts-->
+        <scene sceneID="khB-J4-xzv">
+            <objects>
+                <navigationController id="Het-eh-b6b" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="MyPosts" image="slowmo" catalog="system" id="lgZ-ZU-9ke"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XBc-Da-y3C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ngR-nl-sPh" kind="relationship" relationship="rootViewController" id="e5Q-SM-QL6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WMo-1G-YVu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-522" y="-1699"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="OBk-a9-z34">
@@ -593,7 +690,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o1V-Ef-xWa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-399.19999999999999" y="-1136.5817091454273"/>
+            <point key="canvasLocation" x="-239" y="-986"/>
         </scene>
     </scenes>
     <resources>
@@ -609,6 +706,7 @@
         <image name="plus.app" catalog="system" width="64" height="56"/>
         <image name="post" width="512" height="512"/>
         <image name="profile" width="512" height="512"/>
+        <image name="slowmo" catalog="system" width="64" height="60"/>
         <image name="square.and.pencil" catalog="system" width="64" height="58"/>
         <image name="star" width="512" height="512"/>
     </resources>

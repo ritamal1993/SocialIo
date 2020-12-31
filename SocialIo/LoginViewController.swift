@@ -13,9 +13,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTv: UITextField!
     @IBOutlet weak var pwdTv: UITextField!
    
-    
-    
+       @IBOutlet weak var activity: UIActivityIndicatorView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+activity.isHidden = true;
+        // Do any additional setup after loading the view.
+    }
     @IBAction func login(_ sender: UIButton) {
+        activity.isHidden = false;
      Model.instance.signInToFirebase(email:emailTv.text!, password:pwdTv.text!, callback: { (error: String?) in
                if error == nil{
                       

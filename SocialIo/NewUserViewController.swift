@@ -39,10 +39,10 @@ activity.isHidden = true;
               self.PostTextid.text = UUID().uuidString
     }
               self.userTextid.text=Model.instance.getCurrentUserId()
-        self.PostTextid.isEnabled=false
-        self.PostTextid.tintColor = UIColor.clear
-        self.userTextid.isEnabled=false
-        self.userTextid.tintColor = UIColor.clear
+       // self.PostTextid.isEnabled=false
+       // self.PostTextid.tintColor = UIColor.clear
+      //  self.userTextid.isEnabled=false
+      //  self.userTextid.tintColor = UIColor.clear
     }
         
         override func viewDidAppear(_ animated: Bool) {

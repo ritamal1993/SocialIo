@@ -13,16 +13,16 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailTv: UITextField!
     @IBOutlet weak var userTv: UITextField!
     @IBOutlet weak var pswTv: UITextField!
-    
+      @IBOutlet weak var activity: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+activity.isHidden = true;
         // Do any additional setup after loading the view.
     }
     
     @IBAction func register(_ sender: UIButton) {
 
-      
+      activity.isHidden = false;
              let user = UserAuth(email:emailTv.text!,password:pswTv.text!,fullName: userTv.text!)
           
              Model.instance.createUserInFirebase(user: user, callback: { (error: String?) in
