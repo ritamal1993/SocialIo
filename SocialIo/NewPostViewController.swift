@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewUserViewController: UIViewController,
+class NewPostViewController: UIViewController,
                 UIImagePickerControllerDelegate,
                 UINavigationControllerDelegate{
   
@@ -17,7 +17,7 @@ class NewUserViewController: UIViewController,
     @IBOutlet weak var activity: UIActivityIndicatorView!
    
     
-      var user : User?
+      var post : Post?
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var userTextid: UILabel!
    
@@ -31,18 +31,15 @@ class NewUserViewController: UIViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-activity.isHidden = true;
-        if (user != nil) {
+        activity.isHidden = true;
+        if (post != nil) {
                    self.initForm()
                }
-        if(user == nil){
+        if(post == nil){
               self.PostTextid.text = UUID().uuidString
     }
               self.userTextid.text=Model.instance.getCurrentUserId()
-       // self.PostTextid.isEnabled=false
-       // self.PostTextid.tintColor = UIColor.clear
-      //  self.userTextid.isEnabled=false
-      //  self.userTextid.tintColor = UIColor.clear
+
     }
         
         override func viewDidAppear(_ animated: Bool) {
@@ -55,25 +52,26 @@ activity.isHidden = true;
         
           
     @IBAction func save(_ sender: UIButton) {
-        activity.isHidden = false;
+             activity.isHidden = false;
              saveBtn.isEnabled = false;
-             picBtn.isEnabled = false;
+        picBtn.isEnabled = false;
           
         
-             let st = User(id:self.PostTextid.text!);
+             let st = Post(id:self.PostTextid.text!);
     
               st.name = self.nameTextView.text!
               st.post = self.PostView.text!
               st.userid = self.userTextid.text!
              guard let selectedImage = selectedImage else {
-                 Model.instance.add(user: st);
-                 self.navigationController?.popViewController(animated: true);
+                 Model.instance.add(post: st);
+                self.navigationController?.dismiss(animated: true, completion: nil);
                  return;
              }
 
              Model.instance.saveImage(image: selectedImage) { (url) in
                  st.avatar = url;
-                 Model.instance.add(user: st);
+                 Model.instance.add(post: st);
+              
               self.navigationController?.dismiss(animated: true, completion: nil);
              }
     }
@@ -99,15 +97,15 @@ activity.isHidden = true;
     }
 
     private func initForm(){
-         self.userTextid.text=self.user?.userid
+         self.userTextid.text=self.post?.userid
      
-        self.nameTextView.text=self.user?.name
-        self.PostView.text=self.user?.post
+        self.nameTextView.text=self.post?.name
+        self.PostView.text=self.post?.post
         
-        self.PostTextid.text=self.user?.id
+        self.PostTextid.text=self.post?.id
       
-        if (!self.user!.avatar.isEmpty) {
-                     let url = URL(string: self.user!.avatar)
+        if (!self.post!.avatar.isEmpty) {
+                     let url = URL(string: self.post!.avatar)
         self.picBtn.kf.setBackgroundImage(with: url, for: .normal)
         self.picBtn.setImage(nil, for: .normal)
         }

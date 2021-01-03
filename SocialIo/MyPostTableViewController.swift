@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 class MyPostTableViewController: UITableViewController {
-    var data = [User]()
+    var data = [Post]()
            
            override func viewDidLoad() {
                super.viewDidLoad()
@@ -28,7 +28,7 @@ class MyPostTableViewController: UITableViewController {
            }
            
            @objc func reloadData(){
-            Model.instance.getpostOfCurrentUser{ (_data:[User]?) in
+            Model.instance.getpostOfCurrentUser{ (_data:[Post]?) in
                 if (_data != nil) {
                    
                        self.data = _data!;

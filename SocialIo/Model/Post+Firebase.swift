@@ -8,15 +8,15 @@
 import Foundation
 import Firebase
 
-extension User{
+extension Post{
     convenience init(json:[String:Any]){
         let id = json["id"] as! String;
         self.init(id:id)
 
         name = json["name"] as! String;
         avatar = json["avatar"] as! String;
-         post = json["post"] as! String;
-         userid = json["userid"] as! String;
+        post = json["post"] as! String;
+        userid = json["userid"] as! String;
         let ts = json["lastUpdated"] as! Timestamp
         lastUpdated = ts.seconds
     }

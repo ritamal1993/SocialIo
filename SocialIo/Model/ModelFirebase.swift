@@ -13,11 +13,11 @@ import UIKit
 
 class ModelFirebase{
     
-    func add(user:User){
+    func add(post:Post){
         let db = Firestore.firestore()
 //        var ref: DocumentReference? = nil
-        let json = user.toJson();
-        db.collection("users").document(user.id).setData(json){
+        let json = post.toJson();
+        db.collection("posts").document(post.id).setData(json){
             err in
             if let err = err {
                 print("Error writing document: \(err)")
@@ -29,28 +29,28 @@ class ModelFirebase{
 
     }
     
-        func deletepost(user:User){
+        func deletepost(post:Post){
             let db = Firestore.firestore()
-   
-            db.collection("users").document(user.id).delete(){
+        
+            db.collection("posts").document(post.id).delete(){
                 err in
                 if let err = err {
                     print("Error removing document: \(err)")
                 } else {
                     print("Document successfully removed!")
-                   ModelEvents.UserDataEvent.post();
+                
                 }
             }
 
         }
-    func updatePost(user:User){
+    func updatePost(post:Post){
            let db = Firestore.firestore()
-        db.collection("users").document(user.id).updateData([
-               "name" : user.name,
-               "id" :user.id,
-               "avatar" : user.avatar,
-               "post" :user.post,
-               "userid" :user.userid
+       db.collection("posts").document(post.id).updateData([
+               "name" : post.name,
+               "id" :post.id,
+               "avatar" : post.avatar,
+               "post" :post.post,
+               "userid" :post.userid
            ]) { err in
                if let err = err {
                    print("Error updating document: \(err)")
@@ -59,11 +59,13 @@ class ModelFirebase{
                }
            }
        }
-   
+ 
+    
     func signInToFirebase(email:String, password:String, callback: @escaping (String?) -> ()) {
       Auth.auth().signIn(withEmail: email, password: password) { (FBuser, error) in
         if(error == nil) {
             callback(nil)
+            
         }
         else{callback(error!.localizedDescription)}
       }
@@ -85,84 +87,32 @@ class ModelFirebase{
             else{callback(error!.localizedDescription)}
         }
     }
-  func getpostOfCurrentUser(callback: @escaping ([User]?)->Void){
+  func getpostOfCurrentUser(callback: @escaping ([Post]?)->Void){
        let db = Firestore.firestore()
        let userId = self.getCurrentUserId()!
-       db.collection("users").whereField("userid", isEqualTo: userId).getDocuments { (querySnapshot, err) in
+       db.collection("posts").whereField("userid", isEqualTo: userId).getDocuments { (querySnapshot, err) in
            if let err = err {
                print("Error getting documents: \(err)")
                callback(nil);
            } else {
-               var data = [User]();
+               var data = [Post]();
                for document in querySnapshot!.documents {
-                   data.append(User(json: document.data()));
+                   data.append(Post(json: document.data()));
                }
                callback(data);
            }
        };
    }
-    //////
-    func getCurrentUserName() -> String?{
-        return Auth.auth().currentUser?.displayName
-    }
-    func getCurrentUserEmail() -> String?{
-        return Auth.auth().currentUser?.email
-    }
-    func getCurrentUserId() -> String?{
-        return Auth.auth().currentUser?.uid
-    }
-    func areUserLoggedIn() -> Bool{
-        if (Auth.auth().currentUser != nil){
-            return true
-        }
-        return false
-    }
-    func logOut(){
-      let firebaseAuth = Auth.auth()
-       do {
-           try firebaseAuth.signOut()
-       } catch let signOutError as NSError {
-           print ("Error signing out: %@", signOutError)
-       }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
     //TODO: implement since
-    func getAllUsers(since:Int64, callback: @escaping ([User]?)->Void){
+    func getAllPosts(since:Int64, callback: @escaping ([Post]?)->Void){
         let db = Firestore.firestore()
-        db.collection("users").order(by: "lastUpdated").start(at: [Timestamp(seconds: since, nanoseconds: 0)]).getDocuments { (querySnapshot, err) in
+        db.collection("posts").order(by: "lastUpdated").start(at: [Timestamp(seconds: since, nanoseconds: 0)]).getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
                 callback(nil);
             } else {
-                var data = [User]();
+                var data = [Post]();
                 for document in querySnapshot!.documents {
                     if let ts = document.data()["lastUpdated"] as? Timestamp{
                         let tsDate = ts.dateValue();
@@ -171,10 +121,34 @@ class ModelFirebase{
                         print("\(tsDouble)");
 
                     }
-                    data.append(User(json: document.data()));
+                    data.append(Post(json: document.data()));
                 }
                 callback(data);
             }
         };
     }
+    func getCurrentUserName() -> String?{
+          return Auth.auth().currentUser?.displayName
+      }
+      func getCurrentUserEmail() -> String?{
+          return Auth.auth().currentUser?.email
+      }
+      func getCurrentUserId() -> String?{
+          return Auth.auth().currentUser?.uid
+      }
+      func areUserLoggedIn() -> Bool{
+          if (Auth.auth().currentUser != nil){
+              return true
+          }
+          return false
+      }
+      func logOut(){
+        let firebaseAuth = Auth.auth()
+         do {
+             try firebaseAuth.signOut()
+         } catch let signOutError as NSError {
+             print ("Error signing out: %@", signOutError)
+         }
+      }
+      
 }

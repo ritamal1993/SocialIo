@@ -8,9 +8,9 @@
 
 import UIKit
 import Kingfisher
-class UsersTableViewController: UITableViewController {
+class PostsTableViewController: UITableViewController {
       
-        var data = [User]()
+        var data = [Post]()
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -28,11 +28,12 @@ class UsersTableViewController: UITableViewController {
         }
         
         @objc func reloadData(){
-            Model.instance.getAllUsers { (_data:[User]?) in
+            Model.instance.getAllPosts { (_data:[Post]?) in
                 if (_data != nil) {
                     self.data = _data!;
                     self.tableView.reloadData();
                 }
+             
                 self.refreshControl?.endRefreshing()
             };
         }
@@ -55,7 +56,7 @@ class UsersTableViewController: UITableViewController {
         
         
         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell:UserViewCell = tableView.dequeueReusableCell(withIdentifier: "UserViewCell", for: indexPath) as! UserViewCell
+            let cell:PostViewCell = tableView.dequeueReusableCell(withIdentifier: "PostViewCell", for: indexPath) as! PostViewCell
             
             let st = data[indexPath.row]
            
@@ -109,17 +110,17 @@ class UsersTableViewController: UITableViewController {
         
         // In a storyboard-based application, you will often want to do a little preparation before navigation
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if (segue.identifier == "UserInfoSegue"){
-                let vc:UserInfoViewController = segue.destination as! UserInfoViewController
-                vc.user = selected
+            if (segue.identifier == "PostInfoSegue"){
+                let vc:PostInfoViewController = segue.destination as! PostInfoViewController
+                vc.post = selected
             }
         }
         
         
-        var selected:User?
+        var selected:Post?
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             selected = data[indexPath.row]
-            performSegue(withIdentifier: "UserInfoSegue", sender: self)
+            performSegue(withIdentifier: "PostInfoSegue", sender: self)
         }
  
     }

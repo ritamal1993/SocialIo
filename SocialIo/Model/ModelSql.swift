@@ -24,7 +24,7 @@ class ModelSql{
             }
         }
         create();
-       User.create_table(database: database);
+       Post.create_table(database: database);
     }
     
     deinit {
@@ -63,6 +63,7 @@ class ModelSql{
             if(sqlite3_step(sqlite3_stmt) == SQLITE_ROW){
                 date = Int64(sqlite3_column_int64(sqlite3_stmt,1))
             }
+          
         }
         sqlite3_finalize(sqlite3_stmt)
         return date

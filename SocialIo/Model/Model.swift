@@ -18,29 +18,30 @@ class Model {
     private init(){
     }
     
-    func add(user: User){
-        modelFirebase.add(user: user);
+    func add(post: Post){
+        modelFirebase.add(post: post);
     }
-    func getpostOfCurrentUser(callback: @escaping ([User]?)->Void){
+    func getpostOfCurrentUser(callback: @escaping ([Post]?)->Void){
           modelFirebase.getpostOfCurrentUser(callback: callback);
       }
-    func getAllUsers(callback:@escaping ([User]?)->Void){
+    func getAllPosts(callback:@escaping ([Post]?)->Void){
         
         //get the local last update date
-       let last = User.getLastUpdateDate();
-        
-       
-        modelFirebase.getAllUsers(since:last) { (data) in
-           
+       let last = Post.getLastUpdateDate();
+        modelFirebase.getAllPosts(since:last) { (data) in
            var last:Int64 = 0;
-            for user in data!{
-               user.addToDb()
-                if user.lastUpdated! > last {last = user.lastUpdated!  }
+            
+            for post in data!{
+                  post.addToDb()
+                if post.lastUpdated! > last {
+                    last = post.lastUpdated!
+                  
+                }
             }
           //  update the local last update date
-            User.setLastUpdate(lastUpdated: last)
-           //  get the complete list
-            let finalData = User.getAllUsersFromDb()
+            Post.setLastUpdate(lastUpdated: last)
+          //  get the complete list
+            let finalData = Post.getAllPostsFromDb()
             callback(finalData);
         }
     }
@@ -52,21 +53,7 @@ class Model {
     
     ////// user Autantication ////////
    
-  //  func logIn(email:String,pwd:String,callback:(Bool)->Void){
-        
-    //    logedIn = true;
-    //    callback(true);
-  //  }
-   // func logout(){
   
-  // logedIn=false;
-   // }
-  //  func register(user:String,email:String,pwd:String,callback:(Bool)->Void){
-    
-   // logedIn = true;
-   // callback(true);
-        
-   // }
     
     func signInToFirebase(email:String, password:String ,callback:@escaping (String?)->()){
         
@@ -95,14 +82,19 @@ class Model {
       }
     ////////////////////////////////////////////////////////////
    
-    func deletepost(user: User){
-            modelFirebase.deletepost(user: user)
-             User.delete( user: user)
+    func deletepost(post: Post){
+            modelFirebase.deletepost(post: post)
+            Post.delete(post: post)
+            ModelEvents.UserDataEvent.post();
+    }
         
-        }
+              
+          
+}
+   
    
     ////////////////////////////////////////////////////////////
-}
+
 class ModelEvents{
     static let UserDataEvent = EventNotificationBase(eventName: "com.company.UserDataEvent");
     static let LoggingStateChangeEvent = EventNotificationBase(eventName: "com.company.LoggingStateChangeEvent");

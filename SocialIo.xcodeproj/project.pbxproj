@@ -8,17 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		0751CF372417A406004E9C81 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0751CF362417A3FC004E9C81 /* libsqlite3.0.tbd */; };
-		0751CF3F2417A5D2004E9C81 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0751CF3E2417A5D2004E9C81 /* User.swift */; };
+		0751CF3F2417A5D2004E9C81 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0751CF3E2417A5D2004E9C81 /* Post.swift */; };
 		0751CF412417A5E9004E9C81 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0751CF402417A5E9004E9C81 /* Model.swift */; };
 		0751CF432417A5FF004E9C81 /* ModelSql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0751CF422417A5FE004E9C81 /* ModelSql.swift */; };
 		0751CF472417B8D4004E9C81 /* ModelFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0751CF462417B8D4004E9C81 /* ModelFirebase.swift */; };
-		0751CF492417B9BE004E9C81 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0751CF482417B9BE004E9C81 /* UsersTableViewController.swift */; };
-		0751CF4B2417BA89004E9C81 /* UserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0751CF4A2417BA89004E9C81 /* UserViewCell.swift */; };
+		0751CF492417B9BE004E9C81 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0751CF482417B9BE004E9C81 /* PostsTableViewController.swift */; };
+		0751CF4B2417BA89004E9C81 /* PostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0751CF4A2417BA89004E9C81 /* PostViewCell.swift */; };
 		29C8A5221B727C1E0E4F8EBC /* Pods_SocialIo_SocialIoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CADAF7354348060D0DB11FA8 /* Pods_SocialIo_SocialIoUITests.framework */; };
 		843804BD249A5A7600F48ECB /* FirebaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843804BC249A5A7600F48ECB /* FirebaseStorage.swift */; };
-		843804BF249A5E7B00F48ECB /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843804BE249A5E7B00F48ECB /* NewUserViewController.swift */; };
-		845F13EB257032E800087F74 /* User+Sql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F13EA257032E800087F74 /* User+Sql.swift */; };
-		845F13ED2570341C00087F74 /* User+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F13EC2570341C00087F74 /* User+Firebase.swift */; };
+		843804BF249A5E7B00F48ECB /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843804BE249A5E7B00F48ECB /* NewPostViewController.swift */; };
+		845F13EB257032E800087F74 /* Post+Sql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F13EA257032E800087F74 /* Post+Sql.swift */; };
+		845F13ED2570341C00087F74 /* Post+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845F13EC2570341C00087F74 /* Post+Firebase.swift */; };
 		8461CCE625876A4000EAFEEA /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461CCE525876A4000EAFEEA /* UserAuth.swift */; };
 		8462B8B0257F88BD0027DC58 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462B8AF257F88BD0027DC58 /* LoginViewController.swift */; };
 		8462B8B2257F8A9E0027DC58 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462B8B1257F8A9E0027DC58 /* RegisterViewController.swift */; };
@@ -29,7 +29,7 @@
 		84DF6D26258789CE00F00F30 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DF6D25258789CE00F00F30 /* HomeViewController.swift */; };
 		86ED3B622412688D0042ED88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED3B612412688D0042ED88 /* AppDelegate.swift */; };
 		86ED3B642412688D0042ED88 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED3B632412688D0042ED88 /* SceneDelegate.swift */; };
-		86ED3B662412688D0042ED88 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED3B652412688D0042ED88 /* UserInfoViewController.swift */; };
+		86ED3B662412688D0042ED88 /* PostInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED3B652412688D0042ED88 /* PostInfoViewController.swift */; };
 		86ED3B692412688D0042ED88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86ED3B672412688D0042ED88 /* Main.storyboard */; };
 		86ED3B6B2412688E0042ED88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86ED3B6A2412688E0042ED88 /* Assets.xcassets */; };
 		86ED3B6E2412688E0042ED88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86ED3B6C2412688E0042ED88 /* LaunchScreen.storyboard */; };
@@ -60,20 +60,20 @@
 /* Begin PBXFileReference section */
 		0751CF362417A3FC004E9C81 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		0751CF382417A48B004E9C81 /* SocialIo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SocialIo-Bridging-Header.h"; sourceTree = "<group>"; };
-		0751CF3E2417A5D2004E9C81 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0751CF3E2417A5D2004E9C81 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		0751CF402417A5E9004E9C81 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0751CF422417A5FE004E9C81 /* ModelSql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSql.swift; sourceTree = "<group>"; };
 		0751CF462417B8D4004E9C81 /* ModelFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFirebase.swift; sourceTree = "<group>"; };
-		0751CF482417B9BE004E9C81 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
-		0751CF4A2417BA89004E9C81 /* UserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewCell.swift; sourceTree = "<group>"; };
+		0751CF482417B9BE004E9C81 /* PostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
+		0751CF4A2417BA89004E9C81 /* PostViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewCell.swift; sourceTree = "<group>"; };
 		18CC68E9A18D17BFAF67E6EC /* Pods_SocialIo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialIo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73C343D063E706F50EA0ECAD /* Pods-SocialIo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialIo.debug.xcconfig"; path = "Target Support Files/Pods-SocialIo/Pods-SocialIo.debug.xcconfig"; sourceTree = "<group>"; };
 		7665C6DF26D5832E8D1AECED /* Pods-SocialIo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialIo.release.xcconfig"; path = "Target Support Files/Pods-SocialIo/Pods-SocialIo.release.xcconfig"; sourceTree = "<group>"; };
 		79BE97EC7F205A50A288084C /* Pods-SocialIo-SocialIoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialIo-SocialIoUITests.release.xcconfig"; path = "Target Support Files/Pods-SocialIo-SocialIoUITests/Pods-SocialIo-SocialIoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		843804BC249A5A7600F48ECB /* FirebaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorage.swift; sourceTree = "<group>"; };
-		843804BE249A5E7B00F48ECB /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
-		845F13EA257032E800087F74 /* User+Sql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Sql.swift"; sourceTree = "<group>"; };
-		845F13EC2570341C00087F74 /* User+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Firebase.swift"; sourceTree = "<group>"; };
+		843804BE249A5E7B00F48ECB /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		845F13EA257032E800087F74 /* Post+Sql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+Sql.swift"; sourceTree = "<group>"; };
+		845F13EC2570341C00087F74 /* Post+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+Firebase.swift"; sourceTree = "<group>"; };
 		8461CCE525876A4000EAFEEA /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		8462B8AF257F88BD0027DC58 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8462B8B1257F8A9E0027DC58 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 		86ED3B5E2412688D0042ED88 /* SocialIo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialIo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86ED3B612412688D0042ED88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86ED3B632412688D0042ED88 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		86ED3B652412688D0042ED88 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		86ED3B652412688D0042ED88 /* PostInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInfoViewController.swift; sourceTree = "<group>"; };
 		86ED3B682412688D0042ED88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		86ED3B6A2412688E0042ED88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86ED3B6D2412688E0042ED88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -136,13 +136,13 @@
 		0751CF3D2417A5BC004E9C81 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0751CF3E2417A5D2004E9C81 /* User.swift */,
+				0751CF3E2417A5D2004E9C81 /* Post.swift */,
 				0751CF402417A5E9004E9C81 /* Model.swift */,
 				0751CF422417A5FE004E9C81 /* ModelSql.swift */,
 				0751CF462417B8D4004E9C81 /* ModelFirebase.swift */,
 				843804BC249A5A7600F48ECB /* FirebaseStorage.swift */,
-				845F13EA257032E800087F74 /* User+Sql.swift */,
-				845F13EC2570341C00087F74 /* User+Firebase.swift */,
+				845F13EA257032E800087F74 /* Post+Sql.swift */,
+				845F13EC2570341C00087F74 /* Post+Firebase.swift */,
 				8461CCE525876A4000EAFEEA /* UserAuth.swift */,
 			);
 			path = Model;
@@ -185,11 +185,11 @@
 				86ED3B632412688D0042ED88 /* SceneDelegate.swift */,
 				86ED3B612412688D0042ED88 /* AppDelegate.swift */,
 				0751CF3D2417A5BC004E9C81 /* Model */,
-				86ED3B652412688D0042ED88 /* UserInfoViewController.swift */,
+				86ED3B652412688D0042ED88 /* PostInfoViewController.swift */,
 				84DF6D25258789CE00F00F30 /* HomeViewController.swift */,
-				0751CF4A2417BA89004E9C81 /* UserViewCell.swift */,
-				0751CF482417B9BE004E9C81 /* UsersTableViewController.swift */,
-				843804BE249A5E7B00F48ECB /* NewUserViewController.swift */,
+				0751CF4A2417BA89004E9C81 /* PostViewCell.swift */,
+				0751CF482417B9BE004E9C81 /* PostsTableViewController.swift */,
+				843804BE249A5E7B00F48ECB /* NewPostViewController.swift */,
 				8462B8AF257F88BD0027DC58 /* LoginViewController.swift */,
 				8462B8B1257F8A9E0027DC58 /* RegisterViewController.swift */,
 				84A070282580F0C4008C6685 /* ProfileViewController.swift */,
@@ -493,22 +493,22 @@
 				84B9130C258ABDFE004FB13B /* Constants.swift in Sources */,
 				843804BD249A5A7600F48ECB /* FirebaseStorage.swift in Sources */,
 				0751CF412417A5E9004E9C81 /* Model.swift in Sources */,
-				0751CF4B2417BA89004E9C81 /* UserViewCell.swift in Sources */,
-				845F13EB257032E800087F74 /* User+Sql.swift in Sources */,
+				0751CF4B2417BA89004E9C81 /* PostViewCell.swift in Sources */,
+				845F13EB257032E800087F74 /* Post+Sql.swift in Sources */,
 				84DF6D26258789CE00F00F30 /* HomeViewController.swift in Sources */,
 				0751CF472417B8D4004E9C81 /* ModelFirebase.swift in Sources */,
 				84A070292580F0C5008C6685 /* ProfileViewController.swift in Sources */,
 				8463D54A259CE93000B70124 /* MyPostTableViewController.swift in Sources */,
 				8462B8B2257F8A9E0027DC58 /* RegisterViewController.swift in Sources */,
-				0751CF3F2417A5D2004E9C81 /* User.swift in Sources */,
-				845F13ED2570341C00087F74 /* User+Firebase.swift in Sources */,
-				86ED3B662412688D0042ED88 /* UserInfoViewController.swift in Sources */,
+				0751CF3F2417A5D2004E9C81 /* Post.swift in Sources */,
+				845F13ED2570341C00087F74 /* Post+Firebase.swift in Sources */,
+				86ED3B662412688D0042ED88 /* PostInfoViewController.swift in Sources */,
 				86ED3B622412688D0042ED88 /* AppDelegate.swift in Sources */,
 				0751CF432417A5FF004E9C81 /* ModelSql.swift in Sources */,
-				843804BF249A5E7B00F48ECB /* NewUserViewController.swift in Sources */,
+				843804BF249A5E7B00F48ECB /* NewPostViewController.swift in Sources */,
 				8461CCE625876A4000EAFEEA /* UserAuth.swift in Sources */,
 				86ED3B642412688D0042ED88 /* SceneDelegate.swift in Sources */,
-				0751CF492417B9BE004E9C81 /* UsersTableViewController.swift in Sources */,
+				0751CF492417B9BE004E9C81 /* PostsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

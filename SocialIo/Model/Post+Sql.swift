@@ -11,10 +11,10 @@
 import Foundation
 
 
-extension User{
+extension Post{
     static func create_table(database: OpaquePointer?){
         var errormsg: UnsafeMutablePointer<Int8>? = nil
-        let res = sqlite3_exec(database, "CREATE TABLE IF NOT EXISTS POSTS_C(ST_ID TEXT PRIMARY KEY, NAME TEXT, AVATAR TEXT, POST TEXT, USERID TEXT)", nil, nil, &errormsg);
+        let res = sqlite3_exec(database, "CREATE TABLE IF NOT EXISTS POSTS1(ST_ID TEXT PRIMARY KEY, NAME TEXT, AVATAR TEXT, POST TEXT, USERID TEXT)", nil, nil, &errormsg);
         if(res != 0){
             print("error creating table");
             return
@@ -23,7 +23,7 @@ extension User{
     
     func addToDb(){
         var sqlite3_stmt: OpaquePointer? = nil
-        if (sqlite3_prepare_v2(ModelSql.instance.database,"INSERT OR REPLACE INTO POSTS_C(ST_ID, NAME, AVATAR, POST, USERID) VALUES (?,?,?,?,?);",-1, &sqlite3_stmt,nil) == SQLITE_OK){
+        if (sqlite3_prepare_v2(ModelSql.instance.database,"INSERT OR REPLACE INTO POSTS1(ST_ID, NAME, AVATAR, POST, USERID) VALUES (?,?,?,?,?);",-1, &sqlite3_stmt,nil) == SQLITE_OK){
             let id = self.id.cString(using: .utf8)
             let name = self.name.cString(using: .utf8)
             let avatar = self.avatar.cString(using: .utf8)
@@ -43,18 +43,18 @@ extension User{
         sqlite3_finalize(sqlite3_stmt)
     }
 
-   static func delete(user : User ){
-            //let val:Int = 12345
+   static func delete(post : Post){
+           
             
-            let deleteStatementString = "DELETE FROM POSTS_C where ST_ID like ?;"
+            let deleteStatementString = "DELETE FROM POSTS1 where ST_ID like ?;"
             print(deleteStatementString)
-            //        print("DELETE FROM POSTS where POSTID = " + postId + ";")
+
             var sqlite3_stmt: OpaquePointer? = nil
             
             if (sqlite3_prepare_v2(ModelSql.instance.database,deleteStatementString,-1,&sqlite3_stmt,nil) == SQLITE_OK) {
-                sqlite3_bind_text(sqlite3_stmt, 1, user.id,-1,nil);
+                sqlite3_bind_text(sqlite3_stmt, 1,post.id,-1,nil);
 
-                if sqlite3_step(sqlite3_stmt) == SQLITE_DONE {
+                if(sqlite3_step(sqlite3_stmt) == SQLITE_DONE){
                     print("\nSuccessfully deleted row.")
                 } else {
                     print("\nCould not delete row.")
@@ -66,20 +66,21 @@ extension User{
             sqlite3_finalize(sqlite3_stmt)
         }
     
-    static func getAllUsersFromDb()->[User]{
+    static func getAllPostsFromDb()->[Post]{
         var sqlite3_stmt: OpaquePointer? = nil
-        var data = [User]()
+        var data = [Post]()
         
-        if (sqlite3_prepare_v2(ModelSql.instance.database,"SELECT * from POSTS_C;",-1,&sqlite3_stmt,nil)
+        if (sqlite3_prepare_v2(ModelSql.instance.database,"SELECT * from POSTS1;",-1,&sqlite3_stmt,nil)
             == SQLITE_OK){
             while(sqlite3_step(sqlite3_stmt) == SQLITE_ROW){
                 let stId = String(cString:sqlite3_column_text(sqlite3_stmt,0)!)
-                let st = User(id: stId);
+                let st = Post(id: stId);
                 st.name = String(cString:sqlite3_column_text(sqlite3_stmt,1)!)
                 st.avatar = String(cString:sqlite3_column_text(sqlite3_stmt,2)!)
                 st.post = String(cString:sqlite3_column_text(sqlite3_stmt,3)!)
                 st.userid = String(cString:sqlite3_column_text(sqlite3_stmt,4)!)
                 data.append(st)
+                
             }
         }
         sqlite3_finalize(sqlite3_stmt)
@@ -87,11 +88,11 @@ extension User{
     }
     
     static func setLastUpdate(lastUpdated:Int64){
-        return ModelSql.instance.setLastUpdate(name: "POSTS_C", lastUpdated: lastUpdated);
+        return ModelSql.instance.setLastUpdate(name: "POSTS1", lastUpdated: lastUpdated);
     }
     
     static func getLastUpdateDate()->Int64{
-        return ModelSql.instance.getLastUpdateDate(name: "POSTS_C")
+        return ModelSql.instance.getLastUpdateDate(name: "POSTS1")
     }
     
     

@@ -11,7 +11,7 @@
 import Foundation
 import Firebase
 
-class User {
+class Post{
     let id:String
     var name:String = ""
     var avatar:String = ""

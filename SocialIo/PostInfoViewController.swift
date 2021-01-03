@@ -9,50 +9,45 @@
 import UIKit
 
 import Kingfisher
-class UserInfoViewController: UIViewController{
-   var user : User?
+class PostInfoViewController: UIViewController{
+   var post : Post?
 
     @IBOutlet weak var avatarImg: UIImageView!
     
-
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var idLabel: UILabel!
     
-     @IBOutlet weak var activity: UIActivityIndicatorView!
+    @IBOutlet weak var activity: UIActivityIndicatorView!
+
     @IBOutlet weak var userid: UILabel!
-    
-   
     
     @IBOutlet weak var postid: UILabel!
     
-    
     @IBOutlet weak var editBtn: UIBarButtonItem!
-    //  @IBOutlet weak var editBtn: UIBarButtonItem!
+    
+
+
     
         override func viewDidLoad() {
         super.viewDidLoad()
             activity.isHidden = true;
-        self.userid.text = user!.userid
-        self.postid.text = user!.id
+        self.userid.text = post!.userid
+        self.postid.text = post!.id
             
             if (self.userid.text != Model.instance.getCurrentUserId()) {
                   self.editBtn.isEnabled = false
                   self.editBtn.tintColor = UIColor.clear
-                 
-         // self.navigationItem.rightBarButtonItem=self.editBtn
+            
             }
-          //  self.userid.isEnabled=false
-           //  self.userid.tintColor = UIColor.clear
-          //  self.postid.isEnabled=false
-            // self.postid.tintColor = UIColor.clear
-            self.nameLabel.text = user!.name
+         
+            self.nameLabel.text = post!.name
           
-            self.idLabel.text = user!.post
+            self.idLabel.text = post!.post
            
             self.avatarImg.image = UIImage(named: "avatar")
-            if(self.user!.avatar != ""){
-            avatarImg.kf.setImage(with: URL(string: user!.avatar));
+            if(self.post!.avatar != ""){
+            avatarImg.kf.setImage(with: URL(string: post!.avatar));
         
        
 
@@ -64,8 +59,8 @@ class UserInfoViewController: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          if (segue.identifier == "EditPost") {
              if let nav = segue.destination as? UINavigationController,
-                let vc = nav.topViewController as? NewUserViewController {
-               vc.user = self.user
+                let vc = nav.topViewController as? NewPostViewController {
+               vc.post = self.post
              }
          }
 
@@ -73,21 +68,23 @@ class UserInfoViewController: UIViewController{
       var selectedImage:UIImage?
             
             @IBAction func deletep(_ sender: Any) {
-              
-             activity.isHidden = false;
                 if (self.userid.text == Model.instance.getCurrentUserId()){
-                 let st = User(id:self.postid.text!)
+                 
+                
+                    activity.isHidden=false;
+                
+                 let st = Post(id:self.postid.text!)
                  st.name = self.nameLabel.text!
                  st.post=self.idLabel.text!
                  st.userid=self.userid.text!
-                 Model.instance.deletepost(user:st)
-           
-            let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
+                 Model.instance.deletepost(post:st);
+               
+           let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
                                   
                                   self.view.window?.rootViewController = homeViewController
                                   self.view.window?.makeKeyAndVisible()
-                      
-            }
+                }
+           
     }
        
        

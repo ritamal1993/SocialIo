@@ -8,15 +8,16 @@
 
 import UIKit
 
-class UserViewCell: UITableViewCell {
+class PostViewCell: UITableViewCell {
 
+  
     @IBOutlet weak var name: UILabel!
-     
+    
      @IBOutlet weak var idLabel: UILabel!
      
      @IBOutlet weak var avatarImg: UIImageView!
      
-    @IBOutlet weak var id: UILabel!
+
    
     override func awakeFromNib() {
          super.awakeFromNib()

@@ -17,12 +17,14 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 activity.isHidden = true;
+         pswTv.isSecureTextEntry = true;
         // Do any additional setup after loading the view.
     }
     
     @IBAction func register(_ sender: UIButton) {
 
       activity.isHidden = false;
+       
              let user = UserAuth(email:emailTv.text!,password:pswTv.text!,fullName: userTv.text!)
           
              Model.instance.createUserInFirebase(user: user, callback: { (error: String?) in
