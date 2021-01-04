@@ -23,6 +23,10 @@ class PostsTableViewController: UITableViewController {
                 self.refreshControl?.beginRefreshing()
                 self.reloadData();
             }
+            ModelEvents.DeleteDataEvent.observe {
+                self.refreshControl?.beginRefreshing()
+                self.reloadData();
+            }
             self.refreshControl?.beginRefreshing()
             reloadData();
         }

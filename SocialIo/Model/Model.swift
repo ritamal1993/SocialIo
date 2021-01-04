@@ -14,7 +14,7 @@ class Model {
     static let instance = Model()
     
     var modelFirebase:ModelFirebase = ModelFirebase()
-    
+
     private init(){
     }
     
@@ -27,7 +27,7 @@ class Model {
     func getAllPosts(callback:@escaping ([Post]?)->Void){
         
         //get the local last update date
-       let last = Post.getLastUpdateDate();
+        let last = Post.getLastUpdateDate();
         modelFirebase.getAllPosts(since:last) { (data) in
            var last:Int64 = 0;
             
@@ -83,9 +83,10 @@ class Model {
     ////////////////////////////////////////////////////////////
    
     func deletepost(post: Post){
+           
             modelFirebase.deletepost(post: post)
             Post.delete(post: post)
-            ModelEvents.UserDataEvent.post();
+            ModelEvents.DeleteDataEvent.post();
     }
         
               
@@ -98,7 +99,7 @@ class Model {
 class ModelEvents{
     static let UserDataEvent = EventNotificationBase(eventName: "com.company.UserDataEvent");
     static let LoggingStateChangeEvent = EventNotificationBase(eventName: "com.company.LoggingStateChangeEvent");
-    
+        static let DeleteDataEvent = EventNotificationBase(eventName: "com.company.LoggingStateChangeEvent");
     static let CommentsDataEvent = StringEventNotificationBase<String>(eventName: "com.company.CommentsDataEvent");
     private init(){}
 }

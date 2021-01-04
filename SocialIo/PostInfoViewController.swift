@@ -27,7 +27,8 @@ class PostInfoViewController: UIViewController{
     @IBOutlet weak var editBtn: UIBarButtonItem!
     
 
-
+    @IBOutlet weak var deleteBtn: UIButton!
+    
     
         override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,34 +66,48 @@ class PostInfoViewController: UIViewController{
          }
 
     }
-      var selectedImage:UIImage?
-            
+    var selectedImage:UIImage?
+               
+
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+                selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage;
+            self.avatarImg.image = selectedImage;
+                dismiss(animated: true, completion: nil);
+       }
+         
+           
+    
+     
             @IBAction func deletep(_ sender: Any) {
                 if (self.userid.text == Model.instance.getCurrentUserId()){
-                 
-                
-                    activity.isHidden=false;
-                
-                 let st = Post(id:self.postid.text!)
-                 st.name = self.nameLabel.text!
-                 st.post=self.idLabel.text!
-                 st.userid=self.userid.text!
-                 Model.instance.deletepost(post:st);
-               
-           let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? UITabBarController
-                                  
-                                  self.view.window?.rootViewController = homeViewController
-                                  self.view.window?.makeKeyAndVisible()
-                }
-           
-    }
+                    
+                 let alert = UIAlertController(title: "You are about to delete this post!", message: "Are you sure?", preferredStyle: .alert)
+                                
+                                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                                    Model.instance.deletepost(post:self.post!)
+                                    self.activity.isHidden=false
+                                    self.deleteBtn.isHidden=false
+                                    ModelEvents.DeleteDataEvent.post();
+                                                          self.navigationController?.popViewController(animated: true);
+                                }));
+                                
+                                alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
+                                    return;
+                                }));
+                                
+                                self.present(alert, animated: true)
+                            }else{
+                                return
+                            }
+                        }
+                    }
+                    
+              
+
        
-       
-       func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage;
-        self.avatarImg.image = selectedImage;
-            dismiss(animated: true, completion: nil);
-   }
-     
-       
-}
+
+
+
+
+

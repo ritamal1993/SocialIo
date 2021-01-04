@@ -16,6 +16,7 @@ class MyPostViewCell: UITableViewCell {
     @IBOutlet weak var imageview: UIImageView!
     
     
+    @IBOutlet weak var name: UILabel!
     
     @IBOutlet weak var postview: UILabel!
     

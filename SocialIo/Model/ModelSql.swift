@@ -23,7 +23,7 @@ class ModelSql{
                 return
             }
         }
-        create();
+       create();
        Post.create_table(database: database);
     }
     

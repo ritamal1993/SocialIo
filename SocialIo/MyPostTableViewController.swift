@@ -62,7 +62,7 @@ class MyPostTableViewController: UITableViewController {
                let st = data[indexPath.row]
             
               cell.userid.text = st.userid
-            
+            cell.name.text=st.name
                cell.postview.text = st.post
             
             cell.imageview.image = UIImage(named: "avatar")
